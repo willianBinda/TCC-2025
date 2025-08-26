@@ -60,7 +60,7 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard{
         
         address contratoAntigo;
 
-        if(_tipo == TipoOrgao.Estadual){
+        if(_tipo == TipoOrgao.ESTADUAL){
             require(contrato.estadual != _novoContrato, "Contrato em uso");
             contratoAntigo = contrato.estadual;
             contrato.estadual = _novoContrato;
@@ -85,7 +85,7 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard{
 
         address destino;
 
-        if(_tipoOrgao == TipoOrgao.Estadual){
+        if(_tipoOrgao == TipoOrgao.ESTADUAL){
             require(contrato.estadual != address(0), "Contrato Estado invalido");
             destino = contrato.estadual;
         }else{
@@ -112,7 +112,7 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard{
 
     function calcularAplicacao(uint256 _valor) private {
         uint256 valorTotalAplicado = aplicacao.valorAplicado + _valor;
-        uint256 percentualAplicado = (valorTotalAplicado / aplicacao.valorArrecadado) * 100;
+        uint256 percentualAplicado = (valorTotalAplicado * 100 ) / aplicacao.valorArrecadado;
 
         aplicacao.valorAplicado = valorTotalAplicado;
         aplicacao.percentualAplicado = percentualAplicado;

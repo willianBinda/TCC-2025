@@ -6,7 +6,7 @@ import {Enumeradores} from "/utils/Enumeradores.sol";
 contract Modificadores is Enumeradores{
     modifier onlyEstadualMunicipal(TipoOrgao _tipo) {
         require(
-            _tipo == TipoOrgao.Estadual || _tipo == TipoOrgao.Municipal,
+            _tipo == TipoOrgao.ESTADUAL || _tipo == TipoOrgao.MUNICIPAL,
             "Orgao nao definido"
         );
         _;
