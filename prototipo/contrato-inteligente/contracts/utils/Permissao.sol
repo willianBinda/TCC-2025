@@ -3,12 +3,12 @@ pragma solidity >=0.8.2 <0.9.0;
 
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import {Enumeradores} from "/utils/Enumeradores.sol";
+import {Enumeradores} from "./Enumeradores.sol";
 
-contract Permissao is AccessControl, Enumeradores{
+contract Permissao is AccessControl, Enumeradores {
     using EnumerableSet for EnumerableSet.AddressSet;
 
-    constructor(){
+    constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -19,10 +19,21 @@ contract Permissao is AccessControl, Enumeradores{
     EnumerableSet.AddressSet private fornecedoresAtivos;
 
     //eventos
-    event PermissaoAdicionada(address indexed admin, address indexed endereco, TipoPermissao indexed tipoPermissao); 
-    event PermissaoRemovida(address indexed admin, address indexed endereco, TipoPermissao indexed tipoPermissao);
+    event PermissaoAdicionada(
+        address indexed admin,
+        address indexed endereco,
+        TipoPermissao indexed tipoPermissao
+    );
 
-    function adicionarPermissaoOrgao(address _endereco) public onlyRole(DEFAULT_ADMIN_ROLE){
+    event PermissaoRemovida(
+        address indexed admin,
+        address indexed endereco,
+        TipoPermissao indexed tipoPermissao
+    );
+
+    function adicionarPermissaoOrgao(
+        address _endereco
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
         require(!hasRole(ORGAO_ROLE, _endereco));
 
         _grantRole(ORGAO_ROLE, _endereco);
@@ -31,7 +42,9 @@ contract Permissao is AccessControl, Enumeradores{
         emit PermissaoAdicionada(msg.sender, _endereco, TipoPermissao.ORGAO);
     }
 
-    function removerPermissaoOrgao(address _endereco) public onlyRole(DEFAULT_ADMIN_ROLE){
+    function removerPermissaoOrgao(
+        address _endereco
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
         require(hasRole(ORGAO_ROLE, _endereco));
 
         _revokeRole(ORGAO_ROLE, _endereco);
@@ -40,16 +53,24 @@ contract Permissao is AccessControl, Enumeradores{
         emit PermissaoRemovida(msg.sender, _endereco, TipoPermissao.ORGAO);
     }
 
-    function adicionarPermissaoFornecedor(address _endereco) public onlyRole(DEFAULT_ADMIN_ROLE){
+    function adicionarPermissaoFornecedor(
+        address _endereco
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
         require(!hasRole(FORNECEDOR_ROLE, _endereco));
 
         _grantRole(FORNECEDOR_ROLE, _endereco);
         fornecedoresAtivos.add(_endereco);
 
-        emit PermissaoAdicionada(msg.sender, _endereco, TipoPermissao.FORNECEDOR);
+        emit PermissaoAdicionada(
+            msg.sender,
+            _endereco,
+            TipoPermissao.FORNECEDOR
+        );
     }
 
-    function removerPermissaoFornecedor(address _endereco) public onlyRole(DEFAULT_ADMIN_ROLE){
+    function removerPermissaoFornecedor(
+        address _endereco
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
         require(hasRole(FORNECEDOR_ROLE, _endereco));
 
         _revokeRole(FORNECEDOR_ROLE, _endereco);

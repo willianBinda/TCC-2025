@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.2 <0.9.0;
 
-import { Enumeradores } from "/utils/Enumeradores.sol";
+import {Enumeradores} from "./Enumeradores.sol";
 
 contract Estruturas {
-    struct Contrato{
+    struct Contrato {
         address estadual;
         address municipal;
     }
 
-    struct Aplicacao{
+    struct Aplicacao {
         uint256 percentualMinimo;
         uint256 percentualAplicado;
         uint256 valorAplicado;
@@ -17,7 +17,7 @@ contract Estruturas {
         uint256 valorDistribuido;
     }
 
-    struct Despesa{
+    struct Despesa {
         uint256 id;
         address emitente;
         address fornecedor;
