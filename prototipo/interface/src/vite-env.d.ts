@@ -6,6 +6,9 @@ interface ImportMetaEnv {
    * Definida em .env como VITE_API_URL
    */
   readonly VITE_RPC_URL: string;
+  readonly VITE_ENDERECO_CONTRATO_FEDERAL: string;
+  readonly VITE_ENDERECO_CONTRATO_ESTADUAL: string;
+  readonly VITE_ENDERECO_CONTRATO_MUNICIPAL: string;
 
   /**
    * Ambiente atual (development, production, etc.)
