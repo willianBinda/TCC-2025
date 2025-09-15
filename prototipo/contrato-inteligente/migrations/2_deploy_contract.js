@@ -12,11 +12,7 @@ const TipoOrgao = {
   MUNICIPAL: 2,
 };
 
-module.exports = async function (
-  deployer,
-  network,
-  [admin, orgao, fornecedor, ...rest]
-) {
+module.exports = async function (deployer, network, [admin, orgao, fornecedor, ...rest]) {
   await deployer.deploy(Moeda);
   const moeda = await Moeda.deployed();
 
@@ -50,4 +46,6 @@ module.exports = async function (
   await federal.setValorArrecadado();
   await estadual.setValorArrecadado();
   await municipal.setValorArrecadado();
+
+  // await federal.distribuir(ethers.parseEther("10000000000"), 1, "Teste", { from: orgao });
 };

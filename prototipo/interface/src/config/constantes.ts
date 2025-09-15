@@ -10,3 +10,11 @@ export const ENDERECO_CONTRATO_MUNICIPAL = import.meta.env.VITE_ENDERECO_CONTRAT
 export const ABI_FEDERAL = contratoFederal.abi;
 export const ABI_ESTADUAL = contratoEstadual.abi;
 export const ABI_MUNICIPAL = contratoMunicipal.abi;
+
+export const CORES_GRAFICO = {
+  percentualMinimo: "#424242",
+  percentualAplicado: "#FF7043",
+  valorAplicado: "#fbc02d",
+  valorArrecadado: "#1565c0",
+  valorDistribuido: "#2e7d32",
+};
