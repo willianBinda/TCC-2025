@@ -1,6 +1,7 @@
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
 import "../../css/navbar/style.scss";
+import { Link } from "react-router-dom";
 
 function BarraNavegacao() {
   const { connectar, enderecoUsuario } = useEstadoGlobal();
@@ -8,10 +9,10 @@ function BarraNavegacao() {
     <Navbar className="barra-navegacao">
       <Container>
         <Nav>
-          <Nav.Link href="#inicio" className="texto">
+          <Nav.Link as={Link} to="/" className="texto">
             Início
           </Nav.Link>
-          <Nav.Link href="#orgao" className="texto">
+          <Nav.Link as={Link} to="/orgao" className="texto">
             Órgão
           </Nav.Link>
         </Nav>

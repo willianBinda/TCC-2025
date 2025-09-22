@@ -1,4 +1,5 @@
 import type { Contract } from "ethers";
+import type { TypeTipoOrgao } from "./TipoOrgao";
 
 export type TypeContrato = {
   estadual: string;
@@ -10,3 +11,5 @@ export type ContratoPermissaoType = Contract & {
   temPermissaoFornecedor(): Promise<boolean>;
   temPermissaoAdmin(): Promise<boolean>;
 };
+
+export type ContratosType = { nome: TypeTipoOrgao; contrato: Contract }[];

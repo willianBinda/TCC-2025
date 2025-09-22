@@ -2,29 +2,31 @@
 @use "../variaveis.scss" as *;
 
 $radius: 100px;
+
 .barra-navegacao {
   background-color: $azul;
   margin: 20px;
   border-radius: $radius;
 }
 
-.texto {
+.barra-navegacao .texto {
   color: $branco;
 }
-.texto:hover {
+
+.barra-navegacao .texto:hover {
   color: $amarelo;
 }
 
-.botao-connectar {
+.barra-navegacao .botao-connectar {
   background-color: $verde;
   border: none;
   border-radius: $radius;
 }
 
-.botao-connectar:hover {
+.barra-navegacao .botao-connectar:hover {
   background-color: color.scale($verde, $lightness: -15%);
 }
 
-.botao-connectar:disabled {
+.barra-navegacao .botao-connectar:disabled {
   background-color: $verde;
 }

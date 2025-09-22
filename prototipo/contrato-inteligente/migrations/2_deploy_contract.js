@@ -12,7 +12,11 @@ const TipoOrgao = {
   MUNICIPAL: 2,
 };
 
-module.exports = async function (deployer, network, [admin, orgao, fornecedor, ...rest]) {
+module.exports = async function (
+  deployer,
+  network,
+  [admin, orgaoFederal, orgaoEstadual, orgaoMunicipal, fornecedor, ...rest]
+) {
   await deployer.deploy(Moeda);
   const moeda = await Moeda.deployed();
 
@@ -25,13 +29,13 @@ module.exports = async function (deployer, network, [admin, orgao, fornecedor, .
   await deployer.deploy(Municipal, moeda.address);
   const municipal = await Municipal.deployed();
 
-  await federal.adicionarPermissaoOrgao(orgao);
+  await federal.adicionarPermissaoOrgao(orgaoFederal);
   await federal.adicionarPermissaoFornecedor(fornecedor);
 
-  await estadual.adicionarPermissaoOrgao(orgao);
+  await estadual.adicionarPermissaoOrgao(orgaoEstadual);
   await estadual.adicionarPermissaoFornecedor(fornecedor);
 
-  await municipal.adicionarPermissaoOrgao(orgao);
+  await municipal.adicionarPermissaoOrgao(orgaoMunicipal);
   await municipal.adicionarPermissaoFornecedor(fornecedor);
 
   await federal.setContrato(TipoOrgao.ESTADUAL, federal.address);

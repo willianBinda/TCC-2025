@@ -7,9 +7,24 @@
   left: 10px;
   z-index: 9999;
   min-width: 250px;
-  background-color: color.scale($amarelo, $lightness: 10%);
   border: none;
   opacity: 0.9;
+}
+
+.contrato {
+  background-color: color.scale($amarelo, $lightness: 10%);
+}
+
+.formulario {
+  background-color: color.scale($amarelo, $lightness: 10%);
+}
+
+.falha {
+  background-color: color.scale(red, $lightness: 10%);
+}
+
+.carteira {
+  background-color: color.scale(red, $lightness: 10%);
 }
 /* .alertaa {
   position: "fixed" !important;

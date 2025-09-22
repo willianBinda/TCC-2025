@@ -1,0 +1,33 @@
+@use "sass:color";
+@use "../variaveis.scss" as *;
+
+.card-distribuir {
+  background-color: $verde;
+}
+.card-registrar {
+  background-color: $amarelo;
+}
+
+.campo {
+  margin-top: 10px;
+}
+
+.botao-destino {
+  border-radius: 100px;
+  background-color: $amarelo;
+  border: none;
+}
+
+.botao-destino:hover {
+  background-color: color.scale($amarelo, $lightness: -25%);
+}
+
+.botao-registrar {
+  border-radius: 100px;
+  background-color: $verde;
+  border: none;
+}
+
+.botao-registrar:hover {
+  background-color: color.scale($verde, $lightness: -25%);
+}

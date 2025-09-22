@@ -1,32 +1,37 @@
-import { useEffect, useState } from "react";
-import ArrecadacaoDistribuicao from "./components/arrecadacaoDistribuicao";
-import Grafico from "./components/graficos";
-import { buscarAplicacao } from "./services/arrecadacaoDistribuicao";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import type { TypeAplicacao } from "./types/Aplicacao";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./views/home";
+import Alerta from "./components/alerta";
+import BarraNavegacao from "./components/navbar";
+import Orgao from "./views/orgao";
 
 function App() {
-  const [aplicacao, setAplicacao] = useState<TypeAplicacao[]>([]);
-  const [arrecadacao, setArrecadacao] = useState(0n);
-  const [distribuicao, setDistribuicao] = useState(0n);
-  useEffect(() => {
-    buscarAplicacao()
-      .then((res) => {
-        setAplicacao(res.aplicacoes);
-        setArrecadacao(res.valorTotalArrecadado);
-        setDistribuicao(res.valorTotalDistribuido);
-      })
-      .catch((err) => {
-        console.log("ERRO: ", err);
-      });
-  }, []);
   return (
-    <>
-      <ArrecadacaoDistribuicao arrecadacao={arrecadacao} distribuicao={distribuicao} />
-      <Grafico aplicacao={aplicacao} />
-      <div>Interface</div>
-    </>
+    <Router>
+      <BarraNavegacao />
+      <Alerta />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/orgao" element={<Orgao />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+{
+  /* <Route path="/orgao" element={<Home />} /> */
+}
+{
+  /* <Route path="/orgao" element={<Profile />}>
+            <Route path="users/:userId" element={<UserDetail />} />
+            <Route path="settings" element={<Settings />} />
+          </Route> */
+}
+{
+  /* <Route path="/contact" element={<Contact />} /> */
+}
