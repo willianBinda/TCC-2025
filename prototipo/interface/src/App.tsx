@@ -1,12 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./views/home";
 import Alerta from "./components/alerta";
 import BarraNavegacao from "./components/navbar";
 import Orgao from "./views/orgao";
+import { useEstadoGlobal } from "./context/useEstadoGlobal";
+import { RotaProtegida } from "./routes/rota";
 
 function App() {
+  const { permissoes } = useEstadoGlobal();
+
   return (
     <Router>
       <BarraNavegacao />
@@ -14,7 +18,28 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/orgao" element={<Orgao />} />
+          {permissoes.orgao.length && (
+            <Route
+              path="/orgao"
+              element={
+                <RotaProtegida podeAcessar={!!permissoes.orgao.length}>
+                  <Orgao />
+                </RotaProtegida>
+              }
+            />
+          )}
+
+          {permissoes.fornecedor.length && (
+            <Route
+              path="/fornecedor"
+              element={
+                <RotaProtegida podeAcessar={!!permissoes.fornecedor.length}>
+                  <Orgao />
+                </RotaProtegida>
+              }
+            />
+          )}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>

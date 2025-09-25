@@ -17,7 +17,6 @@ function Grafico({ aplicacao }: { aplicacao: TypeAplicacao[] }) {
           name: string;
         }[];
       }[] = [];
-
       if (!aplicacao || !aplicacao.length) {
         for (let i = 0; i < 3; i++) {
           series.push({

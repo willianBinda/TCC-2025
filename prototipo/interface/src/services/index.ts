@@ -1,4 +1,4 @@
-import { formatEther } from "ethers";
+import { formatEther, parseEther } from "ethers";
 
 export const formatarValor = (_valor: bigint | number | string) => {
   let numero: number;
@@ -17,4 +17,11 @@ export const formatarValor = (_valor: bigint | number | string) => {
     minimumFractionDigits: 2,
     maximumFractionDigits: 6, // mantém casas decimais do ETH
   });
+};
+
+export const transformarValor = (valor: string) => {
+  const valorSemFormato = valor.replace(/\D/g, "");
+  const valorNumerico = Number(valorSemFormato) / 100;
+  const valorString = valorNumerico.toString();
+  return parseEther(valorString);
 };

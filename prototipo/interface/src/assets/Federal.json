@@ -24579,7 +24579,7 @@
     "version": "0.8.21+commit.d9974bed.Emscripten.clang"
   },
   "networks": {
-    "1757281651046": {
+    "1757793324142": {
       "events": {
         "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
           "anonymous": false,
@@ -24832,10 +24832,10 @@
         }
       },
       "links": {},
-      "address": "0x3b309b77c8Ad0bB82542142ce603bB6f1c2D6B92",
-      "transactionHash": "0x9dfb1e8f9c8daefd62b07d7e4df6d55baae3074b0778f3dd496168d44fb933fa"
+      "address": "0x4174D1D3d1DFfa652b3e3A56F949B1411f2A60Ec",
+      "transactionHash": "0x7e9b660a946ef6345ee0fd1070a7646d64f818e59677caefb40c85e89299f043"
     },
-    "1757635766004": {
+    "1757803690249": {
       "events": {
         "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
           "anonymous": false,
@@ -25088,12 +25088,1036 @@
         }
       },
       "links": {},
-      "address": "0x93A7D54AacaE75b8D6D65a3b99C56235CfC7B19a",
-      "transactionHash": "0x9fa2ccfbe5eb1d5bc07e0e433e01bafea54c5d5b03b2ddc460bcaf23f92514f7"
+      "address": "0x3DDe42285Bab58f82C5fd1B22783a2104FDCb15A",
+      "transactionHash": "0xc59e5b00cbf37b58dc81925c48f16804a5793e019b8414d14fa0ab1737dfc0f5"
+    },
+    "1757872560300": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0xad622baa2fa07669e59116fea9998523a9ee8fa6f68b9040406f1bb7fcadd12a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x11495292f82b4f1b747b8e38926a2862fb6f08818d3b3047ba581cbdaecf8510": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x100406bC9822ef38DaA6Adc7193F7Be8339A2beA",
+      "transactionHash": "0xf6dc68f4d3dab653d9ba4f12b27c321bd207eb68ae143f90ed10d32d5c89f982"
+    },
+    "1757902310144": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0xad622baa2fa07669e59116fea9998523a9ee8fa6f68b9040406f1bb7fcadd12a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x11495292f82b4f1b747b8e38926a2862fb6f08818d3b3047ba581cbdaecf8510": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xa61533B0E4641F4F7Aa2d650E7ec6374d1d037F2",
+      "transactionHash": "0x5e697018b842233a34694155a6d5587aa5f0f57fb9851ec746548a2c7bcf439f"
+    },
+    "1758488052034": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0xad622baa2fa07669e59116fea9998523a9ee8fa6f68b9040406f1bb7fcadd12a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x11495292f82b4f1b747b8e38926a2862fb6f08818d3b3047ba581cbdaecf8510": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xa7e458B1983d90DA0D9d84D5188A72B54F866BA6",
+      "transactionHash": "0x4f307a9f7537d39273b0f076fd336d720c74b4ba8569aed3180b852420b72835"
+    },
+    "1758756088863": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0xad622baa2fa07669e59116fea9998523a9ee8fa6f68b9040406f1bb7fcadd12a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x11495292f82b4f1b747b8e38926a2862fb6f08818d3b3047ba581cbdaecf8510": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x11D7d595183b8F74a67a8B0833f6585537FaF97E",
+      "transactionHash": "0xdf3200b0fa9b8cafbe4883d8e38ce943a17e1b6c70a31926b16ffbd6b667b49d"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-09-12T00:09:47.499Z",
+  "updatedAt": "2025-09-24T23:22:22.524Z",
   "networkType": "ethereum",
   "devdoc": {
     "errors": {

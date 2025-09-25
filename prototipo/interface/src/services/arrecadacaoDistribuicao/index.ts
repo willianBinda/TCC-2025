@@ -26,6 +26,6 @@ export const buscarAplicacao = async () => {
     valorTotalArrecadado += aplicacao.valorArrecadado;
     valorTotalDistribuido += aplicacao.valorDistribuido;
   }
-
+  console.log(aplicacoes);
   return { aplicacoes, valorTotalArrecadado, valorTotalDistribuido };
 };

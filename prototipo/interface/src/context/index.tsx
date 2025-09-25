@@ -59,9 +59,7 @@ function ProvedorEstados({ children }: { children: ReactNode }) {
       const temOrgao = await contrato.contrato.temPermissaoOrgao();
       const temFornecedor = await contrato.contrato.temPermissaoFornecedor();
 
-      if (temOrgao) {
-        permissoes.orgao.push(contrato.nome);
-      }
+      if (temOrgao) permissoes.orgao.push(contrato.nome);
       if (temFornecedor) permissoes.fornecedor.push(contrato.nome);
     }
 

@@ -1,21 +1,15 @@
+import { transformarValor } from "..";
 import { EnumAlerta } from "../../enum/EnumAlerta";
+import { EnumTipoOrgao } from "../../enum/EnumTipoOrgao";
 import type { ContratosType } from "../../types/Contrato";
 import type { PermissoesUsuarioType } from "../../types/Permissao";
 import { pegarContratoOrgao } from "../../utils/form";
-import { EnumTipoOrgao } from "../../enum/EnumTipoOrgao";
-import { transformarValor } from "..";
 
-export const buscarFornecedoresAtivos = async (contratos: ContratosType, permissoes: PermissoesUsuarioType) => {
-  const contrato = pegarContratoOrgao(contratos, permissoes);
-  return await contrato!.buscarFornecedoresAtivos();
-};
-
-export const registrar = async (
+export const distribuir = async (
   contratos: ContratosType,
   permissoes: PermissoesUsuarioType,
   setAlerta: (alerta: EnumAlerta) => void,
   valor: string,
-  enderecoFornecedor: string,
   justificativa: string,
   destino?: string,
   txAnterior?: string
@@ -25,8 +19,13 @@ export const registrar = async (
     return;
   }
 
-  if (valor === "" || justificativa.trim() === "" || enderecoFornecedor === "") {
+  if (valor === "" || justificativa.trim() === "" || destino === "" || !destino) {
     setAlerta(EnumAlerta.Formulario);
+    return;
+  }
+
+  if (permissoes.orgao.includes(EnumTipoOrgao.FEDERAL) && BigInt(destino) === EnumTipoOrgao.FEDERAL) {
+    setAlerta(EnumAlerta.Falha);
     return;
   }
 
@@ -40,7 +39,7 @@ export const registrar = async (
   const valorEther = transformarValor(valor);
 
   if (permissoes.orgao.includes(EnumTipoOrgao.FEDERAL)) {
-    const tx = await contrato.registrar(valorEther, enderecoFornecedor, justificativa);
+    const tx = await contrato.distribuir(valorEther, destino, justificativa);
     await tx.wait();
     // console.log(tx);
     // console.log("-----------");

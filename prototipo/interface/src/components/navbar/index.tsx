@@ -2,9 +2,10 @@ import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
 import "../../css/navbar/style.scss";
 import { Link } from "react-router-dom";
+import type { PermissoesUsuarioType } from "../../types/Permissao";
 
 function BarraNavegacao() {
-  const { connectar, enderecoUsuario } = useEstadoGlobal();
+  const { connectar, enderecoUsuario, permissoes } = useEstadoGlobal();
   return (
     <Navbar className="barra-navegacao">
       <Container>
@@ -12,9 +13,7 @@ function BarraNavegacao() {
           <Nav.Link as={Link} to="/" className="texto">
             Início
           </Nav.Link>
-          <Nav.Link as={Link} to="/orgao" className="texto">
-            Órgão
-          </Nav.Link>
+          {montarRota(permissoes)}
         </Nav>
         {definirBotao(enderecoUsuario, connectar)}
       </Container>
@@ -36,6 +35,24 @@ const definirBotao = (enderecoUsuario: string, connectar: () => void) => {
       Conectar Carteira
     </Button>
   );
+};
+
+const montarRota = (permissoes: PermissoesUsuarioType) => {
+  if (permissoes.orgao.length) {
+    return (
+      <Nav.Link as={Link} to="/orgao" className="texto">
+        Órgão
+      </Nav.Link>
+    );
+  } else if (permissoes.fornecedor.length) {
+    return (
+      <Nav.Link as={Link} to="/fornecedor" className="texto">
+        Fornecedor
+      </Nav.Link>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default BarraNavegacao;

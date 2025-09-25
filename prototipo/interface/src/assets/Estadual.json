@@ -16338,27 +16338,13 @@
   "ast": {
     "absolutePath": "project:/contracts/2_Estadual.sol",
     "exportedSymbols": {
-      "Estadual": [
-        9121
-      ],
-      "Estruturas": [
-        9656
-      ],
-      "IERC20": [
-        547
-      ],
-      "Modificadores": [
-        9696
-      ],
-      "Permissao": [
-        9945
-      ],
-      "ReentrancyGuard": [
-        2172
-      ],
-      "SafeERC20": [
-        1011
-      ]
+      "Estadual": [9121],
+      "Estruturas": [9656],
+      "IERC20": [547],
+      "Modificadores": [9696],
+      "Permissao": [9945],
+      "ReentrancyGuard": [2172],
+      "SafeERC20": [1011]
     },
     "id": 9122,
     "license": "MIT",
@@ -16366,15 +16352,7 @@
     "nodes": [
       {
         "id": 8602,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.8",
-          ".2",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.8", ".2", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:31:27"
       },
@@ -16535,9 +16513,7 @@
             "baseName": {
               "id": 8615,
               "name": "Permissao",
-              "nameLocations": [
-                "482:9:27"
-              ],
+              "nameLocations": ["482:9:27"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 9945,
               "src": "482:9:27"
@@ -16550,9 +16526,7 @@
             "baseName": {
               "id": 8617,
               "name": "Estruturas",
-              "nameLocations": [
-                "493:10:27"
-              ],
+              "nameLocations": ["493:10:27"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 9656,
               "src": "493:10:27"
@@ -16565,9 +16539,7 @@
             "baseName": {
               "id": 8619,
               "name": "Modificadores",
-              "nameLocations": [
-                "505:13:27"
-              ],
+              "nameLocations": ["505:13:27"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 9696,
               "src": "505:13:27"
@@ -16580,9 +16552,7 @@
             "baseName": {
               "id": 8621,
               "name": "ReentrancyGuard",
-              "nameLocations": [
-                "520:15:27"
-              ],
+              "nameLocations": ["520:15:27"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 2172,
               "src": "520:15:27"
@@ -16597,19 +16567,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 9121,
-        "linearizedBaseContracts": [
-          9121,
-          2172,
-          9696,
-          9656,
-          9945,
-          9623,
-          296,
-          2450,
-          2462,
-          379,
-          2051
-        ],
+        "linearizedBaseContracts": [9121, 2172, 9696, 9656, 9945, 9623, 296, 2450, 2462, 379, 2051],
         "name": "Estadual",
         "nameLocation": "470:8:27",
         "nodeType": "ContractDefinition",
@@ -16620,9 +16578,7 @@
             "libraryName": {
               "id": 8623,
               "name": "SafeERC20",
-              "nameLocations": [
-                "548:9:27"
-              ],
+              "nameLocations": ["548:9:27"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1011,
               "src": "548:9:27"
@@ -16635,9 +16591,7 @@
               "pathNode": {
                 "id": 8624,
                 "name": "IERC20",
-                "nameLocations": [
-                  "562:6:27"
-                ],
+                "nameLocations": ["562:6:27"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 547,
                 "src": "562:6:27"
@@ -16672,9 +16626,7 @@
               "pathNode": {
                 "id": 8627,
                 "name": "IERC20",
-                "nameLocations": [
-                  "574:6:27"
-                ],
+                "nameLocations": ["574:6:27"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 547,
                 "src": "574:6:27"
@@ -16710,9 +16662,7 @@
               "pathNode": {
                 "id": 8630,
                 "name": "Aplicacao",
-                "nameLocations": [
-                  "600:9:27"
-                ],
+                "nameLocations": ["600:9:27"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 9643,
                 "src": "600:9:27"
@@ -16847,20 +16797,8 @@
               "isPure": true,
               "kind": "structConstructorCall",
               "lValueRequested": false,
-              "nameLocations": [
-                "661:16:27",
-                "695:18:27",
-                "730:13:27",
-                "760:15:27",
-                "792:16:27"
-              ],
-              "names": [
-                "percentualMinimo",
-                "percentualAplicado",
-                "valorAplicado",
-                "valorArrecadado",
-                "valorDistribuido"
-              ],
+              "nameLocations": ["661:16:27", "695:18:27", "730:13:27", "760:15:27", "792:16:27"],
+              "names": ["percentualMinimo", "percentualAplicado", "valorAplicado", "valorArrecadado", "valorDistribuido"],
               "nodeType": "FunctionCall",
               "src": "637:185:27",
               "tryCall": false,
@@ -16893,9 +16831,7 @@
               "pathNode": {
                 "id": 8640,
                 "name": "Contrato",
-                "nameLocations": [
-                  "829:8:27"
-                ],
+                "nameLocations": ["829:8:27"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 9632,
                 "src": "829:8:27"
@@ -16953,9 +16889,7 @@
                 "pathNode": {
                   "id": 8644,
                   "name": "Despesa",
-                  "nameLocations": [
-                    "879:7:27"
-                  ],
+                  "nameLocations": ["879:7:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 9655,
                   "src": "879:7:27"
@@ -17144,10 +17078,7 @@
                       "id": 8655,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "990:7:27",
                       "typeDescriptions": {
@@ -17373,9 +17304,7 @@
                     "pathNode": {
                       "id": 8675,
                       "name": "TipoOrgao",
-                      "nameLocations": [
-                        "1143:9:27"
-                      ],
+                      "nameLocations": ["1143:9:27"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 9614,
                       "src": "1143:9:27"
@@ -17542,9 +17471,7 @@
                     "pathNode": {
                       "id": 8688,
                       "name": "TipoOrgao",
-                      "nameLocations": [
-                        "1349:9:27"
-                      ],
+                      "nameLocations": ["1349:9:27"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 9614,
                       "src": "1349:9:27"
@@ -17794,9 +17721,7 @@
                     "pathNode": {
                       "id": 8707,
                       "name": "Situacao",
-                      "nameLocations": [
-                        "1619:8:27"
-                      ],
+                      "nameLocations": ["1619:8:27"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 9622,
                       "src": "1619:8:27"
@@ -17876,9 +17801,7 @@
                     "pathNode": {
                       "id": 8714,
                       "name": "Situacao",
-                      "nameLocations": [
-                        "1707:8:27"
-                      ],
+                      "nameLocations": ["1707:8:27"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 9622,
                       "src": "1707:8:27"
@@ -18036,9 +17959,7 @@
                 "modifierName": {
                   "id": 8722,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "1796:8:27"
-                  ],
+                  "nameLocations": ["1796:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "1796:8:27"
@@ -18199,10 +18120,7 @@
                       "id": 8742,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1993:7:27",
                       "typeDescriptions": {
@@ -18322,10 +18240,7 @@
                       "id": 8752,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2060:7:27",
                       "typeDescriptions": {
@@ -18354,9 +18269,7 @@
                   "src": "2060:63:27"
                 },
                 {
-                  "assignments": [
-                    8761
-                  ],
+                  "assignments": [8761],
                   "declarations": [
                     {
                       "constant": false,
@@ -18638,9 +18551,7 @@
                 "modifierName": {
                   "id": 8738,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "1954:8:27"
-                  ],
+                  "nameLocations": ["1954:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "1954:8:27"
@@ -19024,10 +18935,7 @@
                       "id": 8812,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2687:7:27",
                       "typeDescriptions": {
@@ -19056,9 +18964,7 @@
                   "src": "2687:69:27"
                 },
                 {
-                  "assignments": [
-                    8824
-                  ],
+                  "assignments": [8824],
                   "declarations": [
                     {
                       "constant": false,
@@ -19199,10 +19105,7 @@
                       "id": 8828,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2806:7:27",
                       "typeDescriptions": {
@@ -19553,9 +19456,7 @@
                 "modifierName": {
                   "id": 8803,
                   "name": "nonReentrant",
-                  "nameLocations": [
-                    "2617:12:27"
-                  ],
+                  "nameLocations": ["2617:12:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 2136,
                   "src": "2617:12:27"
@@ -19583,9 +19484,7 @@
                 "modifierName": {
                   "id": 8805,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "2630:8:27"
-                  ],
+                  "nameLocations": ["2630:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "2630:8:27"
@@ -19613,9 +19512,7 @@
                 "modifierName": {
                   "id": 8808,
                   "name": "onlyValorPositivo",
-                  "nameLocations": [
-                    "2651:17:27"
-                  ],
+                  "nameLocations": ["2651:17:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 9695,
                   "src": "2651:17:27"
@@ -19734,9 +19631,7 @@
               "src": "3353:590:27",
               "statements": [
                 {
-                  "assignments": [
-                    8880
-                  ],
+                  "assignments": [8880],
                   "declarations": [
                     {
                       "constant": false,
@@ -19877,10 +19772,7 @@
                       "id": 8884,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "3402:7:27",
                       "typeDescriptions": {
@@ -19909,9 +19801,7 @@
                   "src": "3402:46:27"
                 },
                 {
-                  "assignments": [
-                    8892
-                  ],
+                  "assignments": [8892],
                   "declarations": [
                     {
                       "constant": false,
@@ -20152,20 +20042,8 @@
                       "isPure": false,
                       "kind": "structConstructorCall",
                       "lValueRequested": false,
-                      "nameLocations": [
-                        "3537:2:27",
-                        "3557:8:27",
-                        "3591:10:27",
-                        "3628:8:27",
-                        "3669:5:27"
-                      ],
-                      "names": [
-                        "id",
-                        "emitente",
-                        "fornecedor",
-                        "situacao",
-                        "valor"
-                      ],
+                      "nameLocations": ["3537:2:27", "3557:8:27", "3591:10:27", "3628:8:27", "3669:5:27"],
+                      "names": ["id", "emitente", "fornecedor", "situacao", "valor"],
                       "nodeType": "FunctionCall",
                       "src": "3515:178:27",
                       "tryCall": false,
@@ -20432,9 +20310,7 @@
                 "modifierName": {
                   "id": 8870,
                   "name": "nonReentrant",
-                  "nameLocations": [
-                    "3293:12:27"
-                  ],
+                  "nameLocations": ["3293:12:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 2136,
                   "src": "3293:12:27"
@@ -20462,9 +20338,7 @@
                 "modifierName": {
                   "id": 8872,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "3306:8:27"
-                  ],
+                  "nameLocations": ["3306:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "3306:8:27"
@@ -20492,9 +20366,7 @@
                 "modifierName": {
                   "id": 8875,
                   "name": "onlyValorPositivo",
-                  "nameLocations": [
-                    "3327:17:27"
-                  ],
+                  "nameLocations": ["3327:17:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 9695,
                   "src": "3327:17:27"
@@ -20641,9 +20513,7 @@
               "src": "4000:297:27",
               "statements": [
                 {
-                  "assignments": [
-                    8933
-                  ],
+                  "assignments": [8933],
                   "declarations": [
                     {
                       "constant": false,
@@ -20736,9 +20606,7 @@
                   "src": "4010:61:27"
                 },
                 {
-                  "assignments": [
-                    8940
-                  ],
+                  "assignments": [8940],
                   "declarations": [
                     {
                       "constant": false,
@@ -21060,9 +20928,7 @@
               "src": "4375:635:27",
               "statements": [
                 {
-                  "assignments": [
-                    8972
-                  ],
+                  "assignments": [8972],
                   "declarations": [
                     {
                       "constant": false,
@@ -21085,9 +20951,7 @@
                         "pathNode": {
                           "id": 8970,
                           "name": "Despesa",
-                          "nameLocations": [
-                            "4385:7:27"
-                          ],
+                          "nameLocations": ["4385:7:27"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 9655,
                           "src": "4385:7:27"
@@ -21343,10 +21207,7 @@
                       "id": 8977,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "4435:7:27",
                       "typeDescriptions": {
@@ -22006,9 +21867,7 @@
                 "modifierName": {
                   "id": 8966,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "4349:8:27"
-                  ],
+                  "nameLocations": ["4349:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "4349:8:27"
@@ -22073,9 +21932,7 @@
               "src": "5087:635:27",
               "statements": [
                 {
-                  "assignments": [
-                    9051
-                  ],
+                  "assignments": [9051],
                   "declarations": [
                     {
                       "constant": false,
@@ -22098,9 +21955,7 @@
                         "pathNode": {
                           "id": 9049,
                           "name": "Despesa",
-                          "nameLocations": [
-                            "5097:7:27"
-                          ],
+                          "nameLocations": ["5097:7:27"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 9655,
                           "src": "5097:7:27"
@@ -22356,10 +22211,7 @@
                       "id": 9056,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "5147:7:27",
                       "typeDescriptions": {
@@ -23019,9 +22871,7 @@
                 "modifierName": {
                   "id": 9045,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "5066:8:27"
-                  ],
+                  "nameLocations": ["5066:8:27"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 41,
                   "src": "5066:8:27"
@@ -23082,23 +22932,8 @@
         ],
         "scope": 9122,
         "src": "461:5263:27",
-        "usedErrors": [
-          306,
-          309,
-          559,
-          2117
-        ],
-        "usedEvents": [
-          318,
-          327,
-          336,
-          8683,
-          8696,
-          8713,
-          8720,
-          9747,
-          9756
-        ]
+        "usedErrors": [306, 309, 559, 2117],
+        "usedEvents": [318, 327, 336, 8683, 8696, 8713, 8720, 9747, 9756]
       }
     ],
     "src": "32:5693:27"
@@ -23108,7 +22943,7 @@
     "version": "0.8.21+commit.d9974bed.Emscripten.clang"
   },
   "networks": {
-    "1757281651046": {
+    "1757793324142": {
       "events": {
         "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
           "anonymous": false,
@@ -23373,10 +23208,10 @@
         }
       },
       "links": {},
-      "address": "0xAee885a5ceA9Cb4A4264c6F467385f946Bf34DF2",
-      "transactionHash": "0x2289417991c1118fb89f4375b736d4df7d004e76fbab459e78b6ae30db544233"
+      "address": "0x48d3928e898Cb9c39f5eb8D0e288954174904CB2",
+      "transactionHash": "0x7fb4cee8de00bc1a1df9f95d72b2cbfc629b39aac25b814c4f35a81551718ece"
     },
-    "1757635766004": {
+    "1757803690249": {
       "events": {
         "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
           "anonymous": false,
@@ -23641,12 +23476,1084 @@
         }
       },
       "links": {},
-      "address": "0x67d2a82cc273e357ccC944BBC037889d32fDa9be",
-      "transactionHash": "0xf0457d2298d494bbd3b316b79e7cc0759d3e188127dfbc9846fe9bbd8fea83a8"
+      "address": "0x4891816cce097BE620DE9AB1e8657D37A820B0c0",
+      "transactionHash": "0xa1cfac00d66009620e022e6004348c1095df609c9ada4057263cf291be59e5be"
+    },
+    "1757872560300": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0x3d7459021283319373c0be5fb3d8734deb81aa0223bb9b7afc7d1979437b062e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x86a6fe8c6814507d07d490c525b0712fd0d1ddf1226627b06eae79e59138cb3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x7455565CeA65C666bC0f97E108C0D394E14bC47d",
+      "transactionHash": "0x2286cba50e790e91db67f3db0516733f809224439384f29d912e090c96e8ae80"
+    },
+    "1757902310144": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0x3d7459021283319373c0be5fb3d8734deb81aa0223bb9b7afc7d1979437b062e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x86a6fe8c6814507d07d490c525b0712fd0d1ddf1226627b06eae79e59138cb3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x67901489924A2aAe7ae61FB60Dfdb41441570d83",
+      "transactionHash": "0xb299d2278a5241fbd800f7641d971079a09f553ae3f62a9d5406ade445241db5"
+    },
+    "1758488052034": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0x3d7459021283319373c0be5fb3d8734deb81aa0223bb9b7afc7d1979437b062e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x86a6fe8c6814507d07d490c525b0712fd0d1ddf1226627b06eae79e59138cb3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xF95564Ed398f1dFA82Fd02703FF9Db200A360EAe",
+      "transactionHash": "0xc850c5071b3bbb6c9ac6c16515c600afb61ce2ecb2b9a9fdd8f5c12f7d2e4a97"
+    },
+    "1758756088863": {
+      "events": {
+        "0x51f55bb8c7e9a53719b1a22e21ccc9192133fcab62f2c42a9114b82bf6ac25ad": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "tipoContrato",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoAntigo",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "contratoNovo",
+              "type": "address"
+            }
+          ],
+          "name": "EventoContrato",
+          "type": "event"
+        },
+        "0x3d7459021283319373c0be5fb3d8734deb81aa0223bb9b7afc7d1979437b062e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fornecedor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDespesa",
+          "type": "event"
+        },
+        "0x86a6fe8c6814507d07d490c525b0712fd0d1ddf1226627b06eae79e59138cb3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "txAnterior",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "orgao",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoOrgao",
+              "name": "destino",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "valor",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "justificativa",
+              "type": "string"
+            }
+          ],
+          "name": "EventoDistribuicao",
+          "type": "event"
+        },
+        "0x2d32ded8381560c010722f0fc669abbcb995f8e9bb7ed54365d5d0046936f7a1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.Situacao",
+              "name": "situacao",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "despesaId",
+              "type": "uint256"
+            }
+          ],
+          "name": "EventoSituacaoDespesa",
+          "type": "event"
+        },
+        "0xfa2b6604fab9b4b77a2762bb3466182df167672dc2747e0eab4077be17782f2e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoAdicionada",
+          "type": "event"
+        },
+        "0xddee724a4d97aa985390f461368ffb80d643d929b22fff5fec040204ff91f609": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "endereco",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "enum Enumeradores.TipoPermissao",
+              "name": "tipoPermissao",
+              "type": "uint8"
+            }
+          ],
+          "name": "PermissaoRemovida",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xE92A9A1B06aA43A68FE64C6f894A0cA4c13C55ac",
+      "transactionHash": "0xffcee772cf058bd921ffdc854c5cd498ab7293ba8611ae7b3494fc659cba3533"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-09-12T00:09:47.508Z",
+  "updatedAt": "2025-09-24T23:22:22.534Z",
   "networkType": "ethereum",
   "devdoc": {
     "errors": {

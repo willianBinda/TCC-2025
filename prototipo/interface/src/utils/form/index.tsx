@@ -1,3 +1,6 @@
+import type { ContratosType } from "../../types/Contrato";
+import type { PermissoesUsuarioType } from "../../types/Permissao";
+
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatarValorReal = (e: any, set: (v: string) => void) => {
   let v = e.target.value;
@@ -13,4 +16,12 @@ export const formatarValorReal = (e: any, set: (v: string) => void) => {
   });
 
   set(formatted);
+};
+
+export const pegarContratoOrgao = (contratos: ContratosType, permissoes: PermissoesUsuarioType) => {
+  for (const _contrato of contratos) {
+    if (permissoes.orgao.includes(_contrato.nome)) {
+      return _contrato.contrato;
+    }
+  }
 };
