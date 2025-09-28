@@ -53,10 +53,10 @@ contract Municipal is Permissao, Estruturas, Modificadores, ReentrancyGuard {
     }
 
     function registrar(
-        bytes32 _txAnterior,
-        address _fornecedor,
         uint256 _valor,
-        string memory _justificativa
+        address _fornecedor,
+        string memory _justificativa,
+        bytes32 _txAnterior
     ) public nonReentrant onlyRole(ORGAO_ROLE) onlyValorPositivo(_valor) {
         uint256 saldo = buscarSaldo();
         require(saldo >= _valor, "Saldo insuficiente");

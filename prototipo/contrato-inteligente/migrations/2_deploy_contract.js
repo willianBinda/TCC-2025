@@ -1,6 +1,9 @@
 const { ethers } = require("ethers");
-
 const Moeda = artifacts.require("Moeda");
+
+const { EventEmitter } = require("events");
+
+EventEmitter.defaultMaxListeners = 25;
 
 const Federal = artifacts.require("Federal");
 const Estadual = artifacts.require("Estadual");

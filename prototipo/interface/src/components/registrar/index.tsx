@@ -69,7 +69,7 @@ const Registrar = () => {
         <Button
           className="campo botao-registrar"
           onClick={() => {
-            registrar(contratos, permissoes, setAlerta, valor, enderecoFornecedor, justificativa)
+            registrar(contratos, permissoes, setAlerta, valor, enderecoFornecedor, justificativa, txAnterior)
               .then(() => {
                 setValor("");
                 setTxAnterior("");
