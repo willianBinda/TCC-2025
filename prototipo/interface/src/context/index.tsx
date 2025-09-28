@@ -22,8 +22,8 @@ function ProvedorEstados({ children }: { children: ReactNode }) {
   const [contratos, setContratos] = useState<ContratosType>([]);
   const [permissoes, setPermissoes] = useState<PermissoesUsuarioType>({ fornecedor: [], orgao: [] });
 
-  function handleAccountsChanged(accounts: string[]) {
-    setEnderecoUsuario(accounts[0] ?? "");
+  function handleAccountsChanged() {
+    connectar();
   }
 
   useEffect(() => {

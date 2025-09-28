@@ -15,8 +15,8 @@ const Home = () => {
         setArrecadacao(res.valorTotalArrecadado);
         setDistribuicao(res.valorTotalDistribuido);
       })
-      .catch((err) => {
-        console.log("ERRO: ", err);
+      .catch(() => {
+        // console.log("ERRO: ", err);
       });
   }, []);
   return (

@@ -5,6 +5,8 @@ import "../../css/form/index.scss";
 import { distribuir } from "../../services/distribuir";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
 import { formatarValorReal } from "../../utils/form";
+import type { PermissoesUsuarioType } from "../../types/Permissao";
+import { EnumAlerta } from "../../enum/EnumAlerta";
 
 const Distribuir = () => {
   const { contratos, permissoes, setAlerta } = useEstadoGlobal();
@@ -14,6 +16,10 @@ const Distribuir = () => {
   const [txAnterior, setTxAnterior] = useState("");
   const [justificativa, setJustificativa] = useState("");
 
+  if (permissoes.orgao.includes(EnumTipoOrgao.MUNICIPAL)) {
+    return null;
+  }
+
   return (
     <Card className="card-distribuir">
       <Card.Body>
@@ -21,19 +27,7 @@ const Distribuir = () => {
           <option value="" disabled>
             Destino
           </option>
-          {!permissoes.orgao.includes(EnumTipoOrgao.FEDERAL)
-            ? Array.from(EnumTipoOrgaoHelper.entries()).map(([key, label]) => (
-                <option key={key.toString()} value={key.toString()}>
-                  {label}
-                </option>
-              ))
-            : Array.from(EnumTipoOrgaoHelper.entries())
-                .filter(([key]) => key !== EnumTipoOrgao.FEDERAL)
-                .map(([key, label]) => (
-                  <option key={key.toString()} value={key.toString()}>
-                    {label}
-                  </option>
-                ))}
+          {opcoesDestino(permissoes)}
         </Form.Select>
 
         {!permissoes.orgao.includes(EnumTipoOrgao.FEDERAL) && (
@@ -66,14 +60,16 @@ const Distribuir = () => {
         <Button
           className="campo botao-destino"
           onClick={() => {
-            distribuir(contratos, permissoes, setAlerta, valor, justificativa, destino)
+            distribuir(contratos, permissoes, setAlerta, valor, justificativa, destino, txAnterior)
               .then(() => {
                 setDestino("");
                 setValor("");
                 setTxAnterior("");
                 setJustificativa("");
               })
-              .catch(() => {});
+              .catch(() => {
+                setAlerta(EnumAlerta.Falha);
+              });
           }}
         >
           Distribuir
@@ -81,6 +77,30 @@ const Distribuir = () => {
       </Card.Body>
     </Card>
   );
+};
+
+const opcoesDestino = (permissoes: PermissoesUsuarioType) => {
+  if (!permissoes.orgao.length || permissoes.orgao.includes(EnumTipoOrgao.MUNICIPAL)) {
+    return null;
+  }
+
+  if (permissoes.orgao.includes(EnumTipoOrgao.FEDERAL))
+    return Array.from(EnumTipoOrgaoHelper.entries())
+      .filter(([key]) => key !== EnumTipoOrgao.FEDERAL)
+      .map(([key, label]) => (
+        <option key={key.toString()} value={key.toString()}>
+          {label}
+        </option>
+      ));
+
+  if (permissoes.orgao.includes(EnumTipoOrgao.ESTADUAL))
+    return Array.from(EnumTipoOrgaoHelper.entries())
+      .filter(([key]) => key !== EnumTipoOrgao.FEDERAL && key !== EnumTipoOrgao.ESTADUAL)
+      .map(([key, label]) => (
+        <option key={key.toString()} value={key.toString()}>
+          {label}
+        </option>
+      ));
 };
 
 export default Distribuir;

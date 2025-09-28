@@ -4,6 +4,7 @@ import type { PermissoesUsuarioType } from "../../types/Permissao";
 import { pegarContratoOrgao } from "../../utils/form";
 import { EnumTipoOrgao } from "../../enum/EnumTipoOrgao";
 import { transformarValor } from "..";
+import { ethers } from "ethers";
 
 export const buscarFornecedoresAtivos = async (contratos: ContratosType, permissoes: PermissoesUsuarioType) => {
   const contrato = pegarContratoOrgao(contratos, permissoes);
@@ -17,7 +18,6 @@ export const registrar = async (
   valor: string,
   enderecoFornecedor: string,
   justificativa: string,
-  destino?: string,
   txAnterior?: string
 ) => {
   if (!contratos.length || !permissoes.orgao.length) {
@@ -45,5 +45,15 @@ export const registrar = async (
     // console.log(tx);
     // console.log("-----------");
     // console.log(receipt);
+  } else if (permissoes.orgao.includes(EnumTipoOrgao.ESTADUAL)) {
+    const _txAnterior = txAnterior !== "" ? txAnterior : ethers.ZeroHash;
+    const tx = await contrato.registrar(valorEther, enderecoFornecedor, justificativa, _txAnterior);
+    await tx.wait();
+  } else if (permissoes.orgao.includes(EnumTipoOrgao.MUNICIPAL)) {
+    const _txAnterior = txAnterior !== "" ? txAnterior : ethers.ZeroHash;
+    const tx = await contrato.registrar(valorEther, enderecoFornecedor, justificativa, _txAnterior);
+    await tx.wait();
+  } else {
+    throw new Error("Sem permissão");
   }
 };
