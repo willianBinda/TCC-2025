@@ -1,5 +1,7 @@
-export type TypeEvento<T> = {
-  el: {
-    agrs: T;
-  };
-}[];
+import type { Log } from "ethers";
+
+export type TypeEvento<T> = ({
+  agrs: T;
+  data: string;
+  timestemp: number;
+} & Log)[];
