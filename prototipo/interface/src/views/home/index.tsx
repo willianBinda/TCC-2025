@@ -5,14 +5,13 @@ import ArrecadacaoDistribuicao from "../../components/arrecadacaoDistribuicao";
 import Grafico from "../../components/graficos";
 import { Tabela } from "../../components/tabela";
 import { buscarEventos } from "../../services/tabela";
-import type { TypeEvento } from "../../types/Evento";
-import type { TypeEventoMestre } from "../../types/EventoMestre";
+import type { TypeEventoMestreFormatado } from "../../types/EventoMestre";
 
 const Home = () => {
   const [aplicacao, setAplicacao] = useState<TypeAplicacao[]>([]);
   const [arrecadacao, setArrecadacao] = useState(0n);
   const [distribuicao, setDistribuicao] = useState(0n);
-  const [dadosTabela, setDadosTabela] = useState<TypeEvento<TypeEventoMestre>>([]);
+  const [dadosTabela, setDadosTabela] = useState<TypeEventoMestreFormatado[]>([]);
   useEffect(() => {
     buscarAplicacao()
       .then((res) => {

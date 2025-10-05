@@ -1,0 +1,19 @@
+.tabela .tabela-header th {
+  background-color: var(--verde);
+}
+
+.situacao-pendente {
+  background-color: var(--amarelo);
+}
+
+.situacao-entregue {
+  background-color: var(--verde);
+}
+
+.situacao-recebido {
+  background-color: var(--azul);
+}
+
+.situacao-finalizado {
+  background-color: var(--cinza);
+}

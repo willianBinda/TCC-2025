@@ -11,7 +11,7 @@ import {
 import type { TypeEvento } from "../../types/Evento";
 import type { Contract } from "ethers";
 import type { TypeEventoMestre } from "../../types/EventoMestre";
-import { pegarDataEvento } from "../../utils/evento";
+import { formatarEvento } from "../../utils/evento";
 
 export const buscarEventos = async () => {
   const provider = new ethers.JsonRpcProvider(RPC_URL);
@@ -26,25 +26,16 @@ export const buscarEventos = async () => {
     ...(await eventosMunicipal(contratoMunicipal)).flat(),
   ];
 
-  const resultado = await Promise.all(
-    eventos.map(async (evento) => {
-      return {
-        ...evento,
-        ...(await pegarDataEvento(provider, evento.blockNumber)),
-      };
-    })
-  );
-  resultado.sort((a, b) => b.timestemp - a.timestemp);
+  const resultado = await formatarEvento(provider, eventos);
 
-  return resultado as TypeEvento<TypeEventoMestre>;
+  return resultado;
 };
 
 const eventosFederal = async (contrato: Contract) => {
   const filter = contrato.filters.EventoDistribuicao(null, null);
-  const destribuicao = (await contrato.queryFilter(filter, 0, "latest")) as unknown as TypeEvento<TypeEventoMestre>;
   const filterDespesa = contrato.filters.EventoDespesa(null, null);
+  const destribuicao = (await contrato.queryFilter(filter, 0, "latest")) as unknown as TypeEvento<TypeEventoMestre>;
   const despesa = (await contrato.queryFilter(filterDespesa, 0, "latest")) as unknown as TypeEvento<TypeEventoMestre>;
-
   return [destribuicao, despesa];
 };
 

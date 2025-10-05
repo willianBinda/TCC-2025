@@ -12,6 +12,11 @@ export const EnumTipoOrgaoHelper = new Map<TypeTipoOrgao, string>([
   [EnumTipoOrgao.MUNICIPAL, "Municipal"],
 ]);
 
+export function getDescricaoTipoOrgao(destino?: TypeTipoOrgao | null): string {
+  if (destino === undefined || destino === null) return "";
+  return EnumTipoOrgaoHelper.get(destino) ?? "";
+}
+
 // export const SituacaoCores = {
 //   [SituacaoPedido.RECEBIDO]: { bg: "#d0f0c0", btn: "success" }, // verde claro
 //   [SituacaoPedido.ENTREGUE]: { bg: "#add8e6", btn: "info" }, // azul claro
