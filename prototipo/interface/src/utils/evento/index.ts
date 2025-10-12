@@ -30,7 +30,7 @@ export const formatarEvento = async (
 
       const blocos = buscarBlocos(evento, eventos);
       const situacaoDespesa = await buscarDespesa(contratos, evento.args.despesaId, evento.fragment.name, evento.address);
-      console.log(situacaoDespesa);
+
       return {
         data,
         timestemp,
@@ -102,19 +102,17 @@ const buscarDespesa = async (
   nomeEvento: string,
   enderecoContrato: string
 ) => {
-  // console.log(contratos);
-  // console.log(despesaId);
-  // console.log(nomeEvento);
-  // console.log(enderecoContrato);
   if (enumTipoEvento.ObterTipoEventoPorNome(nomeEvento) === enumTipoEvento.TipoEvento.Despesa) {
     for (let index = 0; index < contratos.length; index++) {
       if ((await contratos[index].getAddress()) === enderecoContrato) {
+        // console.log("despesaID evento: ", despesaId);
         const filtro = contratos[index].filters.EventoSituacaoDespesa(null, despesaId);
         const despesa = (await contratos[index].queryFilter(
           filtro,
           0,
           "latest"
         )) as unknown as TypeEvento<TypeEventoSituacaoDespesa>;
+        // console.log("despesa: ", despesa);
         return despesa.at(-1)?.args?.situacao;
       }
     }

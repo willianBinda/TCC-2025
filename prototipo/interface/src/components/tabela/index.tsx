@@ -12,10 +12,14 @@ import type { TypeEventoMestreFormatado } from "../../types/EventoMestre";
 import { colunas, detalhesEvento } from "../../config/tabela";
 import "../../css/tabela/index.css";
 import { Fragment, useState } from "react";
-import { ObterCssSituacao } from "../../enum/EnumTipoSituacao";
-import { confirmarRecebimento } from "../../services/situacaoRegistro";
+import { EnumTipoSituacao, getDescricaoSituacao, ObterCssSituacao } from "../../enum/EnumTipoSituacao";
+import { confirmarEntrega, confirmarRecebimento } from "../../services/situacaoRegistro";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
-import { verificarPermissaoBotaoRecebimento } from "../../utils";
+import { getOrigemTransacao } from "../../utils";
+import type { PermissoesUsuarioType } from "../../types/Permissao";
+import type { TypeTipoSituacao } from "../../types/TipoSituacao";
+import type { ContratosType } from "../../types/Contrato";
+import type { EnumAlerta } from "../../enum/EnumAlerta";
 
 function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
   const { contratos, permissoes, setAlerta } = useEstadoGlobal();
@@ -81,30 +85,18 @@ function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
                       <Card.Body>
                         {detalhesEvento.map(({ key, label }) => {
                           if (key === "descricaoSituacao") {
-                            const { className, classNameBotao, botaoBloqueado } = ObterCssSituacao(row.original.situacao);
+                            const { className } = ObterCssSituacao(row.original.situacao);
                             return (
                               <p key={key as string}>
                                 <strong>{label}:</strong> <span className={className}>{String(row.original[key])}</span>{" "}
-                                {verificarPermissaoBotaoRecebimento(
+                                {botaoEntregaRecebimento(
+                                  contratos,
                                   permissoes,
                                   row.original.enderecoContrato,
                                   row.original.situacao,
-                                  row.original.despesaId
-                                ) ? (
-                                  <span>
-                                    <Button
-                                      disabled={botaoBloqueado}
-                                      variant="outline-secondary"
-                                      size="sm"
-                                      className={classNameBotao}
-                                      onClick={() =>
-                                        confirmarRecebimento(contratos, permissoes, setAlerta, row.original.despesaId)
-                                      }
-                                    >
-                                      Confirmar Recebimento
-                                    </Button>
-                                  </span>
-                                ) : null}
+                                  row.original.despesaId,
+                                  setAlerta
+                                )}
                               </p>
                             );
                           }
@@ -140,5 +132,56 @@ function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
     </Container>
   );
 }
+
+const botaoEntregaRecebimento = (
+  contratos: ContratosType,
+  permissoes: PermissoesUsuarioType,
+  enderecoContrato: string,
+  situacaoEvento: TypeTipoSituacao,
+  despesaId: bigint | undefined,
+  setAlerta: (alerta: EnumAlerta) => void
+) => {
+  const tipoOrgao = getOrigemTransacao(enderecoContrato);
+
+  if (
+    permissoes.orgao.length > 0 &&
+    (situacaoEvento === EnumTipoSituacao.PENDENTE || situacaoEvento === EnumTipoSituacao.ENTREGUE) &&
+    tipoOrgao !== undefined &&
+    despesaId !== undefined &&
+    permissoes.orgao.includes(tipoOrgao)
+  ) {
+    return (
+      <span>
+        <Button
+          variant="outline-secondary"
+          size="sm"
+          onClick={() => confirmarRecebimento(contratos, permissoes, setAlerta, despesaId)}
+        >
+          Confirmar Recebimento
+        </Button>
+      </span>
+    );
+  } else if (
+    permissoes.fornecedor.length > 0 &&
+    (situacaoEvento === EnumTipoSituacao.PENDENTE || situacaoEvento === EnumTipoSituacao.RECEBIDO) &&
+    tipoOrgao !== undefined &&
+    despesaId !== undefined &&
+    permissoes.fornecedor.includes(tipoOrgao)
+  ) {
+    return (
+      <span>
+        <Button
+          variant="outline-secondary"
+          size="sm"
+          onClick={() => confirmarEntrega(contratos, permissoes, setAlerta, despesaId)}
+        >
+          Confirmar Entrega
+        </Button>
+      </span>
+    );
+  } else {
+    return null;
+  }
+};
 
 export { Tabela };

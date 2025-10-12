@@ -7,7 +7,7 @@
 }
 
 .situacao-entregue {
-  background-color: var(--verde);
+  background-color: var(--azul);
 }
 
 .situacao-recebido {
@@ -15,7 +15,7 @@
 }
 
 .situacao-finalizado {
-  background-color: var(--cinza);
+  background-color: var(--verde);
 }
 
 .container-box {

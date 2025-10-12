@@ -139,7 +139,7 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         uint256 saldo = buscarSaldo();
         require(saldo >= _valor, "Saldo insuficiente");
 
-        uint256 id = proximaDespesaId++;
+        uint256 id = proximaDespesaId;
 
         despesas[id] = Despesa({
             id: id,
@@ -150,6 +150,8 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         });
 
         calcularAplicacao(_valor);
+
+        proximaDespesaId = id + 1;
 
         emit EventoDespesa(
             msg.sender,

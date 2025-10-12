@@ -25,7 +25,7 @@ export const buscarEventos = async () => {
     ...(await eventosEstadual(contratoEstadual)).flat(),
     ...(await eventosMunicipal(contratoMunicipal)).flat(),
   ];
-
+  // console.log(eventos);
   const resultado = await formatarEvento(provider, eventos, [contratoFederal, contratoEstadual, contratoMunicipal]);
 
   return resultado;
