@@ -12,7 +12,7 @@ import type { TypeEventoMestreFormatado } from "../../types/EventoMestre";
 import { colunas, detalhesEvento } from "../../config/tabela";
 import "../../css/tabela/index.css";
 import { Fragment, useState } from "react";
-import { EnumTipoSituacao, getDescricaoSituacao, ObterCssSituacao } from "../../enum/EnumTipoSituacao";
+import { EnumTipoSituacao, ObterCssSituacao } from "../../enum/EnumTipoSituacao";
 import { confirmarEntrega, confirmarRecebimento } from "../../services/situacaoRegistro";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
 import { getOrigemTransacao } from "../../utils";
