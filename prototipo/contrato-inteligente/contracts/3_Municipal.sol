@@ -42,7 +42,10 @@ contract Municipal is Permissao, Estruturas, Modificadores, ReentrancyGuard {
         string justificativa
     );
 
-    event EventoSituacaoDespesa(Situacao indexed situacao, uint256 despesaId);
+    event EventoSituacaoDespesa(
+        Situacao indexed situacao,
+        uint256 indexed despesaId
+    );
 
     function setValorArrecadado() public onlyRole(DEFAULT_ADMIN_ROLE) {
         aplicacao.valorArrecadado = buscarSaldo();

@@ -22,14 +22,14 @@ export function getDescricaoSituacao(situacao?: TypeTipoSituacao | null): string
 export const ObterCssSituacao = (tipo: TypeTipoSituacao) => {
   switch (tipo) {
     case EnumTipoSituacao.PENDENTE:
-      return { className: "situacao-pendente" };
+      return { className: "situacao-pendente", classNameBotao: "", botaoBloqueado: false };
     case EnumTipoSituacao.ENTREGUE:
-      return { className: "situacao-entregue" };
+      return { className: "situacao-entregue", classNameBotao: "", botaoBloqueado: true };
     case EnumTipoSituacao.RECEBIDO:
-      return { className: "situacao-recebido" };
+      return { className: "situacao-recebido", classNameBotao: "", botaoBloqueado: true };
     case EnumTipoSituacao.FINALIZADO:
-      return { className: "situacao-finalizado" };
+      return { className: "situacao-finalizado", classNameBotao: "", botaoBloqueado: true };
     default:
-      return { className: "situacao-outro" };
+      return { className: "situacao-outro", classNameBotao: "", botaoBloqueado: true };
   }
 };

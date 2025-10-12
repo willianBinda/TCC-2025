@@ -27,6 +27,8 @@ function Alerta() {
     return <Alert className="alerta formulario">Preencha os campos obrigatórios</Alert>;
   } else if (alerta === EnumAlerta.Falha) {
     return <Alert className="alerta falha">Ocorreu um erro ao executar uma função do contrato!</Alert>;
+  } else if (alerta === EnumAlerta.DespesaId) {
+    return <Alert className="alerta falha">Despesa não encontrada!</Alert>;
   } else {
     return null;
   }

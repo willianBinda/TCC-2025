@@ -17,3 +17,31 @@
 .situacao-finalizado {
   background-color: var(--cinza);
 }
+
+.container-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* permite quebra se necessário */
+  gap: 12px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.container-box .box {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background-color: #f9f9f9;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all; /* evita sobreposição de texto */
+  max-width: 160px;
+  text-align: center;
+  white-space: normal;
+}
+
+.container-box .arrow {
+  font-size: 18px;
+  user-select: none;
+}

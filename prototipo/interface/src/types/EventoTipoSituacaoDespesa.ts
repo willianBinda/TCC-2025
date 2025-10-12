@@ -1,6 +1,6 @@
 import type { TypeTipoSituacao } from "./TipoSituacao";
 
-export type TypeEventoPermissao = {
+export type TypeEventoSituacaoDespesa = {
   situacao: TypeTipoSituacao;
   despesaId: bigint;
 };

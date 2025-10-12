@@ -4,4 +4,5 @@ export enum EnumAlerta {
   Falha,
   Formulario,
   Contrato,
+  DespesaId,
 }

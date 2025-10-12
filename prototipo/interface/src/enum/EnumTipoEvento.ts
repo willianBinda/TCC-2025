@@ -25,10 +25,22 @@ const ObterDescricaoPorNome = (tipo: string) => {
   }
 };
 
+const ObterTipoEventoPorNome = (tipo: string) => {
+  switch (tipo) {
+    case "EventoDistribuicao":
+      return TipoEvento.Distribuicao;
+    case "EventoDespesa":
+      return TipoEvento.Despesa;
+    default:
+      return "";
+  }
+};
+
 const enumTipoEvento = {
   TipoEvento,
   TipoEventoHelper,
   ObterDescricaoPorNome,
+  ObterTipoEventoPorNome,
 };
 
 export default enumTipoEvento;

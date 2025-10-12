@@ -6,6 +6,9 @@ import { getDescricaoSituacao } from "../../enum/EnumTipoSituacao";
 import { getDescricaoTipoOrgao } from "../../enum/EnumTipoOrgao";
 import { getOrigemTransacao } from "..";
 import enumTipoEvento from "../../enum/EnumTipoEvento";
+import { ENDERECO_CONTRATO_MUNICIPAL } from "../../config/constantes";
+import type { Contract } from "ethers";
+import type { TypeEventoSituacaoDespesa } from "../../types/EventoTipoSituacaoDespesa";
 
 export const pegarDataEvento = async (provider: JsonRpcProvider, numeroBloco: number) => {
   const bloco = await provider.getBlock(numeroBloco);
@@ -18,12 +21,16 @@ export const pegarDataEvento = async (provider: JsonRpcProvider, numeroBloco: nu
 
 export const formatarEvento = async (
   provider: JsonRpcProvider,
-  eventos: TypeEvento<TypeEventoMestre>
+  eventos: TypeEvento<TypeEventoMestre>,
+  contratos: Contract[]
 ): Promise<TypeEventoMestreFormatado[]> => {
   const resultado = await Promise.all(
     eventos.map(async (evento) => {
       const { data, timestemp } = await pegarDataEvento(provider, evento.blockNumber);
-      // console.log(evento);
+
+      const blocos = buscarBlocos(evento, eventos);
+      const situacaoDespesa = await buscarDespesa(contratos, evento.args.despesaId, evento.fragment.name, evento.address);
+      console.log(situacaoDespesa);
       return {
         data,
         timestemp,
@@ -34,10 +41,16 @@ export const formatarEvento = async (
         valor: formatarValor(evento.args.valor),
         despesaId: evento.args.despesaId,
         fornecedor: evento.args.fornecedor ?? "",
-        descricaoSituacao: getDescricaoSituacao(evento.args?.situacao),
-        situacao: evento.args?.situacao,
+        descricaoSituacao:
+          situacaoDespesa !== undefined
+            ? getDescricaoSituacao(situacaoDespesa)
+            : getDescricaoSituacao(evento.args?.situacao),
+        situacao: situacaoDespesa !== undefined ? situacaoDespesa : evento.args?.situacao,
         txAnterior: formatarTxAnterior(evento.args.txAnterior),
         tipoEvento: enumTipoEvento.ObterDescricaoPorNome(evento.fragment.name),
+        txId: evento.transactionHash,
+        blocos,
+        enderecoContrato: evento.address,
       } as TypeEventoMestreFormatado;
     })
   );
@@ -50,4 +63,60 @@ const formatarTxAnterior = (txAnterior?: string) => {
   if (!txAnterior) return "";
   if (txAnterior === ethers.ZeroHash) return "";
   return txAnterior;
+};
+
+const buscarBlocos = (
+  evento: {
+    args: TypeEventoMestre;
+  } & ethers.Log &
+    ethers.EventLog,
+  eventos: TypeEvento<TypeEventoMestre>
+) => {
+  const blocos = [evento.transactionHash];
+  const txAnterior = evento.args.txAnterior;
+
+  if (txAnterior && txAnterior !== ethers.ZeroHash) {
+    blocos.unshift(txAnterior);
+    if (evento.address === ENDERECO_CONTRATO_MUNICIPAL) {
+      const txInicial = verificarTxAnterior(txAnterior, eventos);
+      if (txInicial) blocos.unshift(txInicial);
+    }
+  }
+
+  return blocos;
+};
+
+const verificarTxAnterior = (txAnterior: string, eventos: TypeEvento<TypeEventoMestre>) => {
+  for (let index = 0; index < eventos.length; index++) {
+    if (eventos[index].transactionHash === txAnterior) {
+      if (eventos[index].args.txAnterior && eventos[index].args.txAnterior !== ethers.ZeroHash) {
+        return eventos[index].args.txAnterior;
+      }
+    }
+  }
+};
+
+const buscarDespesa = async (
+  contratos: Contract[],
+  despesaId: bigint | undefined,
+  nomeEvento: string,
+  enderecoContrato: string
+) => {
+  // console.log(contratos);
+  // console.log(despesaId);
+  // console.log(nomeEvento);
+  // console.log(enderecoContrato);
+  if (enumTipoEvento.ObterTipoEventoPorNome(nomeEvento) === enumTipoEvento.TipoEvento.Despesa) {
+    for (let index = 0; index < contratos.length; index++) {
+      if ((await contratos[index].getAddress()) === enderecoContrato) {
+        const filtro = contratos[index].filters.EventoSituacaoDespesa(null, despesaId);
+        const despesa = (await contratos[index].queryFilter(
+          filtro,
+          0,
+          "latest"
+        )) as unknown as TypeEvento<TypeEventoSituacaoDespesa>;
+        return despesa.at(-1)?.args?.situacao;
+      }
+    }
+  }
 };

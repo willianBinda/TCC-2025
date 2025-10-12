@@ -4,14 +4,17 @@ export const colunas = [
   {
     accessorKey: "data",
     header: "Data",
+    enableColumnFilter: true,
   },
   {
     accessorKey: "origem",
     header: "Origem",
+    enableColumnFilter: true,
   },
   {
     accessorKey: "destino",
     header: "Destino",
+    enableColumnFilter: true,
   },
   {
     accessorKey: "valor",
@@ -25,6 +28,7 @@ export const colunas = [
 ];
 
 export const detalhesEvento: { key: keyof TypeEventoMestreFormatado; label: string }[] = [
+  { key: "txId", label: "ID da Transação" },
   { key: "orgao", label: "Endereço do do orgão" },
   { key: "fornecedor", label: "Endereço do fornecedor" },
   { key: "tipoEvento", label: "Tipo de transação" },

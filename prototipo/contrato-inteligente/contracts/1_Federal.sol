@@ -55,7 +55,10 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         string justificativa
     );
 
-    event EventoSituacaoDespesa(Situacao indexed situacao, uint256 despesaId);
+    event EventoSituacaoDespesa(
+        Situacao indexed situacao,
+        uint256 indexed despesaId
+    );
 
     event EventoContrato(
         address indexed admin,

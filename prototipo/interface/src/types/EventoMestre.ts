@@ -28,4 +28,7 @@ export type TypeEventoMestreFormatado = {
   destino: string;
   despesaId?: bigint;
   tipoEvento?: string;
+  txId: string;
+  blocos: string[];
+  enderecoContrato: string;
 };
