@@ -44,12 +44,6 @@ const montarRota = (permissoes: PermissoesUsuarioType) => {
         Órgão
       </Nav.Link>
     );
-  } else if (permissoes.fornecedor.length) {
-    return (
-      <Nav.Link as={Link} to="/fornecedor" className="texto">
-        Fornecedor
-      </Nav.Link>
-    );
   } else {
     return null;
   }

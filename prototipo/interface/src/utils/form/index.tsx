@@ -25,3 +25,11 @@ export const pegarContratoOrgao = (contratos: ContratosType, permissoes: Permiss
     }
   }
 };
+
+export const pegarContratoFornecedor = (contratos: ContratosType, permissoes: PermissoesUsuarioType) => {
+  for (const _contrato of contratos) {
+    if (permissoes.fornecedor.includes(_contrato.nome)) {
+      return _contrato.contrato;
+    }
+  }
+};

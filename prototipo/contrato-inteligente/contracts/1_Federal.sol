@@ -55,7 +55,10 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         string justificativa
     );
 
-    event EventoSituacaoDespesa(Situacao indexed situacao, uint256 despesaId);
+    event EventoSituacaoDespesa(
+        Situacao indexed situacao,
+        uint256 indexed despesaId
+    );
 
     event EventoContrato(
         address indexed admin,
@@ -136,7 +139,7 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         uint256 saldo = buscarSaldo();
         require(saldo >= _valor, "Saldo insuficiente");
 
-        uint256 id = proximaDespesaId++;
+        uint256 id = proximaDespesaId;
 
         despesas[id] = Despesa({
             id: id,
@@ -147,6 +150,8 @@ contract Federal is Permissao, Modificadores, Estruturas, ReentrancyGuard {
         });
 
         calcularAplicacao(_valor);
+
+        proximaDespesaId = id + 1;
 
         emit EventoDespesa(
             msg.sender,

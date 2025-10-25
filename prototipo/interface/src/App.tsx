@@ -29,16 +29,6 @@ function App() {
             />
           )}
 
-          {permissoes.fornecedor.length && (
-            <Route
-              path="/fornecedor"
-              element={
-                <RotaProtegida podeAcessar={!!permissoes.fornecedor.length}>
-                  <Orgao />
-                </RotaProtegida>
-              }
-            />
-          )}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

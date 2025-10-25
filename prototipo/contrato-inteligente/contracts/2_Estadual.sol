@@ -57,7 +57,10 @@ contract Estadual is Permissao, Estruturas, Modificadores, ReentrancyGuard {
         string justificativa
     );
 
-    event EventoSituacaoDespesa(Situacao indexed situacao, uint256 despesaId);
+    event EventoSituacaoDespesa(
+        Situacao indexed situacao,
+        uint256 indexed despesaId
+    );
 
     function setValorArrecadado() public onlyRole(DEFAULT_ADMIN_ROLE) {
         aplicacao.valorArrecadado = buscarSaldo();
@@ -113,7 +116,7 @@ contract Estadual is Permissao, Estruturas, Modificadores, ReentrancyGuard {
     ) public nonReentrant onlyRole(ORGAO_ROLE) onlyValorPositivo(_valor) {
         uint256 saldo = buscarSaldo();
         require(saldo >= _valor, "Saldo insuficiente");
-        uint256 id = proximaDespesaId++;
+        uint256 id = proximaDespesaId;
 
         despesas[id] = Despesa({
             id: id,
@@ -124,6 +127,9 @@ contract Estadual is Permissao, Estruturas, Modificadores, ReentrancyGuard {
         });
 
         calcularAplicacao(_valor);
+
+        proximaDespesaId = id + 1;
+
         emit EventoDespesa(
             _txAnterior,
             msg.sender,
