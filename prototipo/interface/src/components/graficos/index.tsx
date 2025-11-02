@@ -4,47 +4,74 @@ import { opcoes } from "../../config/grafico";
 import "../../css/grafico/index.css";
 import { useEffect, useRef } from "react";
 import type { TypeAplicacao } from "../../types/Aplicacao";
+import { formatEther } from "ethers";
 
 function Grafico({ aplicacao }: { aplicacao: TypeAplicacao[] }) {
   const graficoRef = useRef<ReactECharts>(null);
 
   useEffect(() => {
     const chart = graficoRef.current?.getEchartsInstance();
-    if (chart) {
-      const series: {
-        data: {
-          value: bigint;
-          name: string;
-        }[];
-      }[] = [];
-      if (!aplicacao || !aplicacao.length) {
-        for (let i = 0; i < 3; i++) {
-          series.push({
-            data: [
-              { value: 0n, name: "Percentual Mínimo" },
-              { value: 0n, name: "Percentual Aplicado" },
-              { value: 0n, name: "Valor Aplicado" },
-              { value: 0n, name: "Valor Arrecadado" },
-              { value: 0n, name: "Valor Distribuido" },
-            ],
-          });
-        }
-      } else {
-        for (const item of aplicacao) {
-          series.push({
-            data: [
-              { value: item.percentualMinimo, name: "Percentual Mínimo" },
-              { value: item.percentualAplicado, name: "Percentual Aplicado" },
-              { value: item.valorAplicado, name: "Valor Aplicado" },
-              { value: item.valorArrecadado, name: "Valor Arrecadado" },
-              { value: item.valorDistribuido, name: "Valor Distribuido" },
-            ],
-          });
-        }
-      }
+    if (!chart) return;
 
-      chart.setOption({ series: series });
-    }
+    // const source = (
+    //   aplicacao && aplicacao.length
+    //     ? aplicacao
+    //     : [
+    //         { valorArrecadado: 0n, valorDistribuido: 0n, valorAplicado: 0n, percentualMinimo: 0, percentualAplicado: 0 },
+    //         { valorArrecadado: 0n, valorDistribuido: 0n, valorAplicado: 0n, percentualMinimo: 0, percentualAplicado: 0 },
+    //         { valorArrecadado: 0n, valorDistribuido: 0n, valorAplicado: 0n, percentualMinimo: 0, percentualAplicado: 0 },
+    //       ]
+    // ).map((item, index) => {
+    //   // converta para number para plotagem (ajuste a função de conversão conforme sua unidade)
+    //   // EXEMPLO usando formatEther (se o bigint for wei):
+    //   const numArrecadado = Number(formatEther(item.valorArrecadado)); // ou outro conversor
+    //   const numDistribuido = Number(formatEther(item.valorDistribuido));
+    //   const numAplicado = Number(formatEther(item.valorAplicado));
+
+    //   return {
+    //     orgao: index === 0 ? "Federal" : index === 1 ? "Estadual" : "Municipal",
+    //     valorArrecadado: numArrecadado,
+    //     valorArrecadadoRaw: item.valorArrecadado.toString(),
+    //     valorDistribuido: numDistribuido,
+    //     valorDistribuidoRaw: item.valorDistribuido.toString(),
+    //     valorAplicado: numAplicado,
+    //     valorAplicadoRaw: item.valorAplicado.toString(),
+    //     percentualMinimo: item.percentualMinimo,
+    //     percentualAplicado: item.percentualAplicado,
+    //   };
+    // });
+
+    const defaultOrgaos = ["Federal", "Estadual", "Municipal"];
+
+    const source = (
+      aplicacao && aplicacao.length
+        ? aplicacao
+        : Array(3).fill({
+            valorArrecadado: 0n,
+            valorDistribuido: 0n,
+            valorAplicado: 0n,
+            percentualMinimo: 0,
+            percentualAplicado: 0,
+          })
+    ).map((item, index) => {
+      const numArrecadado = Number(formatEther(item.valorArrecadado));
+      const numDistribuido = Number(formatEther(item.valorDistribuido));
+      const numAplicado = Number(formatEther(item.valorAplicado));
+
+      return {
+        orgao: defaultOrgaos[index], // atribui o nome correto
+        valorArrecadado: numArrecadado,
+        valorArrecadadoRaw: item.valorArrecadado.toString(),
+        valorDistribuido: numDistribuido,
+        valorDistribuidoRaw: item.valorDistribuido.toString(),
+        valorAplicado: numAplicado,
+        valorAplicadoRaw: item.valorAplicado.toString(),
+        percentualMinimo: item.percentualMinimo ?? 0,
+        percentualAplicado: item.percentualAplicado ?? 0,
+      };
+    });
+
+    chart.setOption({ dataset: { source } }, { replaceMerge: ["dataset"] });
   }, [aplicacao]);
 
   return (

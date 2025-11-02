@@ -46,8 +46,8 @@ module.exports = async function (
 
   await estadual.setContrato(municipal.address);
 
-  await moeda.transfer(federal.address, ethers.parseEther("100000000000"));
-  await moeda.transfer(estadual.address, ethers.parseEther("10000000000"));
+  await moeda.transfer(federal.address, ethers.parseEther("1000000000"));
+  await moeda.transfer(estadual.address, ethers.parseEther("1000000000"));
   await moeda.transfer(municipal.address, ethers.parseEther("1000000000"));
 
   await federal.setValorArrecadado();

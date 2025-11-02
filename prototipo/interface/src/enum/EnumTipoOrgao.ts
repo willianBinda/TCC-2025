@@ -7,9 +7,9 @@ export const EnumTipoOrgao = {
 } as const;
 
 export const EnumTipoOrgaoHelper = new Map<TypeTipoOrgao, string>([
-  [EnumTipoOrgao.FEDERAL, "Federal"],
-  [EnumTipoOrgao.ESTADUAL, "Estadual"],
-  [EnumTipoOrgao.MUNICIPAL, "Municipal"],
+  [EnumTipoOrgao.FEDERAL, "Ministério da Saúde"],
+  [EnumTipoOrgao.ESTADUAL, "Secretaria Estadual da Saúde - SC"],
+  [EnumTipoOrgao.MUNICIPAL, "Secretaria Municipal da Saúde - Chapecó"],
 ]);
 
 export function getDescricaoTipoOrgao(destino?: TypeTipoOrgao | null): string {
