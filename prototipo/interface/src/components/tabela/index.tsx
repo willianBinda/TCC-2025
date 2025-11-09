@@ -11,8 +11,8 @@ import { Button, Card, Container, Table } from "react-bootstrap";
 import type { TypeEventoMestreFormatado } from "../../types/EventoMestre";
 import { colunas, detalhesEvento } from "../../config/tabela";
 import "../../css/tabela/index.css";
-import { Fragment, useState } from "react";
-import { EnumTipoSituacao, ObterCssSituacao } from "../../enum/EnumTipoSituacao";
+import { Fragment, useEffect, useState } from "react";
+import { EnumTipoSituacao, getDescricaoSituacao, ObterCssSituacao } from "../../enum/EnumTipoSituacao";
 import { confirmarEntrega, confirmarRecebimento } from "../../services/situacaoRegistro";
 import { useEstadoGlobal } from "../../context/useEstadoGlobal";
 import { getOrigemTransacao } from "../../utils";
@@ -20,15 +20,62 @@ import type { PermissoesUsuarioType } from "../../types/Permissao";
 import type { TypeTipoSituacao } from "../../types/TipoSituacao";
 import type { ContratosType } from "../../types/Contrato";
 import type { EnumAlerta } from "../../enum/EnumAlerta";
+import { escutarEventos } from "../../services/tabela";
+import { ethers } from "ethers";
+import {
+  ABI_ESTADUAL,
+  ABI_FEDERAL,
+  ABI_MUNICIPAL,
+  ENDERECO_CONTRATO_ESTADUAL,
+  ENDERECO_CONTRATO_FEDERAL,
+  ENDERECO_CONTRATO_MUNICIPAL,
+  RPC_URL,
+} from "../../config/constantes";
 
-function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
+function Tabela({
+  dados,
+  setAplicacao,
+  setArrecadacao,
+  setDistribuicao,
+}: {
+  dados: TypeEventoMestreFormatado[];
+  setAplicacao: any;
+  setArrecadacao: any;
+  setDistribuicao: any;
+}) {
   const { contratos, permissoes, setAlerta } = useEstadoGlobal();
   const [expanded, setExpanded] = useState<ExpandedState>({});
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [linhas, setLinhas] = useState(dados);
+
+  useEffect(() => {
+    setLinhas(dados);
+    const provider = new ethers.JsonRpcProvider(RPC_URL);
+
+    const contratoFederal = new ethers.Contract(ENDERECO_CONTRATO_FEDERAL, ABI_FEDERAL, provider);
+    const contratoEstadual = new ethers.Contract(ENDERECO_CONTRATO_ESTADUAL, ABI_ESTADUAL, provider);
+    const contratoMunicipal = new ethers.Contract(ENDERECO_CONTRATO_MUNICIPAL, ABI_MUNICIPAL, provider);
+
+    escutarEventos(
+      setLinhas,
+      [contratoFederal, contratoEstadual, contratoMunicipal],
+      provider,
+      setAplicacao,
+      setArrecadacao,
+      setDistribuicao
+    );
+
+    return () => {
+      contratoFederal.removeAllListeners("*");
+      contratoEstadual.removeAllListeners("*");
+      contratoMunicipal.removeAllListeners("*");
+      console.log("🔇 Listeners de eventos removidos.");
+    };
+  }, [dados]);
 
   const table = useReactTable({
-    data: dados,
+    data: linhas,
     columns: colunas,
     getCoreRowModel: getCoreRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
@@ -38,6 +85,16 @@ function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
   });
+
+  function atualizarSituacao(despesaId: bigint, novaSituacao: TypeTipoSituacao) {
+    setLinhas((prev) =>
+      prev.map((item) =>
+        item.despesaId === despesaId
+          ? { ...item, situacao: novaSituacao, descricaoSituacao: getDescricaoSituacao(novaSituacao) }
+          : item
+      )
+    );
+  }
 
   return (
     <Container>
@@ -95,7 +152,8 @@ function Tabela({ dados }: { dados: TypeEventoMestreFormatado[] }) {
                                   row.original.enderecoContrato,
                                   row.original.situacao,
                                   row.original.despesaId,
-                                  setAlerta
+                                  setAlerta,
+                                  atualizarSituacao
                                 )}
                               </p>
                             );
@@ -139,7 +197,8 @@ const botaoEntregaRecebimento = (
   enderecoContrato: string,
   situacaoEvento: TypeTipoSituacao,
   despesaId: bigint | undefined,
-  setAlerta: (alerta: EnumAlerta) => void
+  setAlerta: (alerta: EnumAlerta) => void,
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void
 ) => {
   const tipoOrgao = getOrigemTransacao(enderecoContrato);
 
@@ -155,7 +214,7 @@ const botaoEntregaRecebimento = (
         <Button
           variant="outline-secondary"
           size="sm"
-          onClick={() => confirmarRecebimento(contratos, permissoes, setAlerta, despesaId)}
+          onClick={() => confirmarRecebimento(contratos, permissoes, setAlerta, despesaId, atualizarSituacao)}
         >
           Confirmar Recebimento
         </Button>
@@ -173,7 +232,7 @@ const botaoEntregaRecebimento = (
         <Button
           variant="outline-secondary"
           size="sm"
-          onClick={() => confirmarEntrega(contratos, permissoes, setAlerta, despesaId)}
+          onClick={() => confirmarEntrega(contratos, permissoes, setAlerta, despesaId, atualizarSituacao, enderecoContrato)}
         >
           Confirmar Entrega
         </Button>

@@ -6,6 +6,7 @@ export enum Code {
   ChainDisconnected = 4901,
   parameterInvalid = -32602,
   internalError = -32603,
+  callException = "CALL_EXCEPTION",
 }
 
 export const CodeHelper = (code: Code): string => {
@@ -24,6 +25,8 @@ export const CodeHelper = (code: Code): string => {
       return "The parameters are invalid.";
     case Code.internalError:
       return "Internal error.";
+    case Code.callException:
+      return "Erro de contrato";
     default:
       return "Erro desconhecido.";
   }

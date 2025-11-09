@@ -10,8 +10,95 @@ import {
 } from "../../config/constantes";
 import type { TypeEvento } from "../../types/Evento";
 import type { Contract } from "ethers";
-import type { TypeEventoMestre } from "../../types/EventoMestre";
+import type { TypeEventoMestre, TypeEventoMestreFormatado } from "../../types/EventoMestre";
 import { formatarEvento } from "../../utils/evento";
+import type { JsonRpcProvider } from "ethers";
+import { buscarAplicacao } from "../arrecadacaoDistribuicao";
+
+export const escutarEventos = async (
+  setLinhas: (val: TypeEventoMestreFormatado[]) => void,
+  contratos: Contract[],
+  provider: JsonRpcProvider,
+  setAplicacao: any,
+  setArrecadacao: any,
+  setDistribuicao: any
+) => {
+  await contratos[0].on("*", async (event) => {
+    if (event.fragment.name === "EventoDespesa" || event.fragment.name === "EventoDistribuicao") {
+      const a: TypeEvento<TypeEventoMestre> = [event.log];
+      const resultado = await formatarEvento(provider, a, contratos);
+      const novoItem = resultado[0];
+      setLinhas((prev: TypeEventoMestreFormatado[]) => {
+        // Verifica se o txid já existe na lista
+        const existe = prev.some((item: TypeEventoMestreFormatado) => item.txId === novoItem.txId);
+
+        if (existe) {
+          return prev;
+        }
+
+        return [novoItem, ...prev]; // adiciona no topo
+      });
+
+      const aplicacao = await buscarAplicacao();
+
+      setAplicacao(aplicacao.aplicacoes);
+      setArrecadacao(aplicacao.valorTotalArrecadado);
+      setDistribuicao(aplicacao.valorTotalDistribuido);
+    }
+
+    // event.removeListener();
+  });
+
+  await contratos[1].on("*", async (event) => {
+    if (event.fragment.name === "EventoDespesa" || event.fragment.name === "EventoDistribuicao") {
+      const a: TypeEvento<TypeEventoMestre> = [event.log];
+      const resultado = await formatarEvento(provider, a, contratos);
+      const novoItem = resultado[0];
+      setLinhas((prev: TypeEventoMestreFormatado[]) => {
+        // Verifica se o txid já existe na lista
+        const existe = prev.some((item: TypeEventoMestreFormatado) => item.txId === novoItem.txId);
+
+        if (existe) {
+          return prev;
+        }
+
+        return [novoItem, ...prev]; // adiciona no topo
+      });
+      const aplicacao = await buscarAplicacao();
+
+      setAplicacao(aplicacao.aplicacoes);
+      setArrecadacao(aplicacao.valorTotalArrecadado);
+      setDistribuicao(aplicacao.valorTotalDistribuido);
+    }
+
+    // event.removeListener();
+  });
+
+  await contratos[2].on("*", async (event) => {
+    if (event.fragment.name === "EventoDespesa" || event.fragment.name === "EventoDistribuicao") {
+      const a: TypeEvento<TypeEventoMestre> = [event.log];
+      const resultado = await formatarEvento(provider, a, contratos);
+      const novoItem = resultado[0];
+      setLinhas((prev: TypeEventoMestreFormatado[]) => {
+        // Verifica se o txid já existe na lista
+        const existe = prev.some((item: TypeEventoMestreFormatado) => item.txId === novoItem.txId);
+
+        if (existe) {
+          return prev;
+        }
+
+        return [novoItem, ...prev]; // adiciona no topo
+      });
+      const aplicacao = await buscarAplicacao();
+
+      setAplicacao(aplicacao.aplicacoes);
+      setArrecadacao(aplicacao.valorTotalArrecadado);
+      setDistribuicao(aplicacao.valorTotalDistribuido);
+    }
+
+    // event.removeListener();
+  });
+};
 
 export const buscarEventos = async () => {
   const provider = new ethers.JsonRpcProvider(RPC_URL);

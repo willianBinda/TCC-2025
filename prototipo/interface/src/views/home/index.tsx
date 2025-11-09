@@ -32,7 +32,12 @@ const Home = () => {
     <>
       <ArrecadacaoDistribuicao arrecadacao={arrecadacao} distribuicao={distribuicao} />
       <Grafico aplicacao={aplicacao} />
-      <Tabela dados={dadosTabela} />
+      <Tabela
+        dados={dadosTabela}
+        setAplicacao={setAplicacao}
+        setArrecadacao={setArrecadacao}
+        setDistribuicao={setDistribuicao}
+      />
     </>
   );
 };

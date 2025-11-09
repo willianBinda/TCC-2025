@@ -1,13 +1,18 @@
 import { EnumAlerta } from "../../enum/EnumAlerta";
+import { CodeHelper } from "../../enum/EnumProviderRpcError";
 import type { ContratosType } from "../../types/Contrato";
+import type { TypeDespesa } from "../../types/Despesa";
+import type { ProviderRpcErrorType } from "../../types/errorRPC";
 import type { PermissoesUsuarioType } from "../../types/Permissao";
+import type { TypeTipoSituacao } from "../../types/TipoSituacao";
 import { pegarContratoFornecedor, pegarContratoOrgao } from "../../utils/form";
 
 const confirmarRecebimento = async (
   contratos: ContratosType,
   permissoes: PermissoesUsuarioType,
   setAlerta: (alerta: EnumAlerta) => void,
-  despesaId: bigint | undefined
+  despesaId: bigint | undefined,
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void
 ) => {
   if (!contratos.length || !permissoes.orgao.length) {
     setAlerta(EnumAlerta.Contrato);
@@ -27,8 +32,21 @@ const confirmarRecebimento = async (
   }
 
   if (permissoes.orgao.length) {
-    const tx = await contrato.confirmarRecebimento(despesaId);
-    await tx.wait();
+    // console.log(contrato);
+    try {
+      const tx = await contrato.confirmarRecebimento(despesaId);
+      await tx.wait();
+    } catch (error) {
+      const rpcError = error as ProviderRpcErrorType;
+      // console.log(CodeHelper(rpcError.code));
+      console.log(rpcError.data);
+      setAlerta(EnumAlerta.Falha);
+    }
+    // console.log("recebido: ", receipt);
+    const despesa: TypeDespesa = await contrato.despesas(despesaId);
+    // console.log(despesa);
+    // console.log("despesa: ", despesa);
+    atualizarSituacao(despesaId, despesa.situacao);
   } else {
     throw new Error("Sem permissão");
   }
@@ -38,7 +56,9 @@ const confirmarEntrega = async (
   contratos: ContratosType,
   permissoes: PermissoesUsuarioType,
   setAlerta: (alerta: EnumAlerta) => void,
-  despesaId: bigint | undefined
+  despesaId: bigint | undefined,
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void,
+  enderecoContrato: string
 ) => {
   if (!contratos.length || !permissoes.fornecedor.length) {
     setAlerta(EnumAlerta.Contrato);
@@ -50,7 +70,7 @@ const confirmarEntrega = async (
     return;
   }
 
-  const contrato = pegarContratoFornecedor(contratos, permissoes);
+  const contrato = pegarContratoFornecedor(contratos, permissoes, enderecoContrato);
 
   if (!contrato) {
     setAlerta(EnumAlerta.Contrato);
@@ -58,8 +78,24 @@ const confirmarEntrega = async (
   }
 
   if (permissoes.fornecedor.length) {
-    const tx = await contrato.confirmarEntrega(despesaId);
-    await tx.wait();
+    // console.log(despesaId);
+    try {
+      // console.log(contrato);
+      const tx = await contrato.confirmarEntrega(despesaId);
+      await tx.wait();
+      const despesa: TypeDespesa = await contrato.despesas(despesaId);
+
+      atualizarSituacao(despesaId, despesa.situacao);
+    } catch (error) {
+      // console.log(Object.keys(error));
+      // console.log(error.code);
+      const rpcError = error as ProviderRpcErrorType;
+      console.log(CodeHelper(rpcError.code));
+      // throw new Error("Sem permissão");
+      setAlerta(EnumAlerta.Falha);
+    }
+
+    // console.log("despesa: ", despesa);
   } else {
     throw new Error("Sem permissão");
   }
