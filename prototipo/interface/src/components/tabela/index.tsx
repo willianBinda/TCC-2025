@@ -86,10 +86,10 @@ function Tabela({
     onGlobalFilterChange: setGlobalFilter,
   });
 
-  function atualizarSituacao(despesaId: bigint, novaSituacao: TypeTipoSituacao) {
+  function atualizarSituacao(despesaId: bigint, novaSituacao: TypeTipoSituacao, txId: string) {
     setLinhas((prev) =>
       prev.map((item) =>
-        item.despesaId === despesaId
+        item.despesaId === despesaId && item.txId === txId
           ? { ...item, situacao: novaSituacao, descricaoSituacao: getDescricaoSituacao(novaSituacao) }
           : item
       )
@@ -153,7 +153,8 @@ function Tabela({
                                   row.original.situacao,
                                   row.original.despesaId,
                                   setAlerta,
-                                  atualizarSituacao
+                                  atualizarSituacao,
+                                  row.original.txId
                                 )}
                               </p>
                             );
@@ -198,7 +199,8 @@ const botaoEntregaRecebimento = (
   situacaoEvento: TypeTipoSituacao,
   despesaId: bigint | undefined,
   setAlerta: (alerta: EnumAlerta) => void,
-  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao, txId: string) => void,
+  txId: string
 ) => {
   const tipoOrgao = getOrigemTransacao(enderecoContrato);
 
@@ -214,7 +216,7 @@ const botaoEntregaRecebimento = (
         <Button
           variant="outline-secondary"
           size="sm"
-          onClick={() => confirmarRecebimento(contratos, permissoes, setAlerta, despesaId, atualizarSituacao)}
+          onClick={() => confirmarRecebimento(contratos, permissoes, setAlerta, despesaId, atualizarSituacao, txId)}
         >
           Confirmar Recebimento
         </Button>
@@ -232,7 +234,9 @@ const botaoEntregaRecebimento = (
         <Button
           variant="outline-secondary"
           size="sm"
-          onClick={() => confirmarEntrega(contratos, permissoes, setAlerta, despesaId, atualizarSituacao, enderecoContrato)}
+          onClick={() =>
+            confirmarEntrega(contratos, permissoes, setAlerta, despesaId, atualizarSituacao, enderecoContrato, txId)
+          }
         >
           Confirmar Entrega
         </Button>

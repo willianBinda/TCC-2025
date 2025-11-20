@@ -12,7 +12,8 @@ const confirmarRecebimento = async (
   permissoes: PermissoesUsuarioType,
   setAlerta: (alerta: EnumAlerta) => void,
   despesaId: bigint | undefined,
-  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao, txId: string) => void,
+  txId: string
 ) => {
   if (!contratos.length || !permissoes.orgao.length) {
     setAlerta(EnumAlerta.Contrato);
@@ -36,17 +37,17 @@ const confirmarRecebimento = async (
     try {
       const tx = await contrato.confirmarRecebimento(despesaId);
       await tx.wait();
+      // console.log("recebido: ", receipt);
+      const despesa: TypeDespesa = await contrato.despesas(despesaId);
+      // console.log(despesa);
+      // console.log("despesa: ", despesa);
+      atualizarSituacao(despesaId, despesa.situacao, txId);
     } catch (error) {
       const rpcError = error as ProviderRpcErrorType;
       // console.log(CodeHelper(rpcError.code));
       console.log(rpcError.data);
       setAlerta(EnumAlerta.Falha);
     }
-    // console.log("recebido: ", receipt);
-    const despesa: TypeDespesa = await contrato.despesas(despesaId);
-    // console.log(despesa);
-    // console.log("despesa: ", despesa);
-    atualizarSituacao(despesaId, despesa.situacao);
   } else {
     throw new Error("Sem permissão");
   }
@@ -57,8 +58,9 @@ const confirmarEntrega = async (
   permissoes: PermissoesUsuarioType,
   setAlerta: (alerta: EnumAlerta) => void,
   despesaId: bigint | undefined,
-  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao) => void,
-  enderecoContrato: string
+  atualizarSituacao: (id: bigint, nova: TypeTipoSituacao, txId: string) => void,
+  enderecoContrato: string,
+  txId: string
 ) => {
   if (!contratos.length || !permissoes.fornecedor.length) {
     setAlerta(EnumAlerta.Contrato);
@@ -85,7 +87,7 @@ const confirmarEntrega = async (
       await tx.wait();
       const despesa: TypeDespesa = await contrato.despesas(despesaId);
 
-      atualizarSituacao(despesaId, despesa.situacao);
+      atualizarSituacao(despesaId, despesa.situacao, txId);
     } catch (error) {
       // console.log(Object.keys(error));
       // console.log(error.code);
