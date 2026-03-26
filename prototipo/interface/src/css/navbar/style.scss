@@ -1,0 +1,32 @@
+@use "sass:color";
+@use "../variaveis.scss" as *;
+
+$radius: 100px;
+
+.barra-navegacao {
+  background-color: $azul;
+  margin: 20px;
+  border-radius: $radius;
+}
+
+.barra-navegacao .texto {
+  color: $branco;
+}
+
+.barra-navegacao .texto:hover {
+  color: $amarelo;
+}
+
+.barra-navegacao .botao-connectar {
+  background-color: $verde;
+  border: none;
+  border-radius: $radius;
+}
+
+.barra-navegacao .botao-connectar:hover {
+  background-color: color.scale($verde, $lightness: -15%);
+}
+
+.barra-navegacao .botao-connectar:disabled {
+  background-color: $verde;
+}

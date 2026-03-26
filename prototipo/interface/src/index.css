@@ -1,0 +1,14 @@
+:root {
+  --verde: #2e7d32;
+  --azul: #1565c0;
+  --amarelo: #fbc02d;
+  --cinza: #424242;
+  --branco: #fafafa;
+}
+
+body {
+  background-color: var(--branco);
+  color: var(--cinza);
+  min-height: 100vh;
+  border: none;
+}
